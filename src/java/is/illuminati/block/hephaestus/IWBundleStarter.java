@@ -1,4 +1,4 @@
-package is.idega.idegaweb.pheidippides;
+package is.illuminati.block.hephaestus;
 
 import com.idega.idegaweb.IWBundle;
 import com.idega.idegaweb.IWBundleStartable;

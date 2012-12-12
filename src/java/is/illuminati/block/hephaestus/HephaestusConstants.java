@@ -1,7 +1,7 @@
-package is.idega.idegaweb.pheidippides;
+package is.illuminati.block.hephaestus;
 
-public class PheidippidesConstants {
+public class HephaestusConstants {
 
-	public static final String IW_BUNDLE_IDENTIFIER = "is.idega.idegaweb.pheidippides";
+	public static final String IW_BUNDLE_IDENTIFIER = "is.illuminati.block.hephaestus";
 	
 }
