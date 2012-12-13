@@ -1,4 +1,4 @@
-package is.illuminati.block.hephaestus.data;
+package is.illuminati.block.hephaestus.business;
 
 public enum LoggingCondition {
 	shut, 

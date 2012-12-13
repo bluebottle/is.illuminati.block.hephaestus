@@ -1,5 +1,8 @@
 package is.illuminati.block.hephaestus.data;
 
+import is.illuminati.block.hephaestus.business.LoggingCondition;
+import is.illuminati.block.hephaestus.business.LoggingDirection;
+
 import java.io.Serializable;
 import java.util.Date;
 
