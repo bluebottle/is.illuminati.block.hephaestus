@@ -42,7 +42,9 @@ public class LogHeader implements Serializable {
     private static final String COLUMN_END_DATE = "date_end";
     private static final String COLUMN_SHIFT = "shift";
     private static final String COLUMN_LOG_DIRECTION = "logdirection";
-    private static final String COLUMN_ENGINEERS = "engr";
+    private static final String COLUMN_ENGINEERS = "engr";    
+    private static final String COLUMN_COMMENT = "comment";
+    private static final String COLUMN_SERVICE_COMPANY = "service_company";
     private static final String COLUMN_CREATED_DATE = "created";
     private static final String COLUMN_CREATED_BY = "created_by";
 
@@ -52,19 +54,19 @@ public class LogHeader implements Serializable {
     private Long id;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = LogHeader.COLUMN_WELL)
+    @JoinColumn(name = LogHeader.COLUMN_WELL, nullable = false)
     private Well well;
 
-    @Column(name = LogHeader.COLUMN_CONDITION)
+    @Column(name = LogHeader.COLUMN_CONDITION, nullable = false)
     @Enumerated(EnumType.STRING)
     private LoggingCondition condition;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = LogHeader.COLUMN_TOOL)
+    @JoinColumn(name = LogHeader.COLUMN_TOOL, nullable = false)
     private Tool tool;
 
     @Temporal(TemporalType.TIMESTAMP)
-    @Column(name = LogHeader.COLUMN_START_DATE)
+    @Column(name = LogHeader.COLUMN_START_DATE, nullable = false)
     private Date startDate;
 
     @Temporal(TemporalType.TIMESTAMP)
@@ -74,19 +76,25 @@ public class LogHeader implements Serializable {
     @Column(name = LogHeader.COLUMN_SHIFT)
     private Double shift;
 
-    @Column(name = LogHeader.COLUMN_LOG_DIRECTION)
+    @Column(name = LogHeader.COLUMN_LOG_DIRECTION, nullable = false)
     @Enumerated(EnumType.STRING)
     private LoggingDirection logDirection;
     
     @Column(name = LogHeader.COLUMN_ENGINEERS, length = 1000)
     private String engineers;
-    
+
+    @Column(name = LogHeader.COLUMN_COMMENT, length = 4000)
+    private String comment;
+
+    @Column(name = LogHeader.COLUMN_SERVICE_COMPANY, length = 1000)
+    private String serviceCompnay;
+
     @Temporal(TemporalType.TIMESTAMP)
-    @Column(name = LogHeader.COLUMN_CREATED_DATE)
+    @Column(name = LogHeader.COLUMN_CREATED_DATE, nullable = false)
     private Date createdDate;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = LogHeader.COLUMN_CREATED_BY)
+    @JoinColumn(name = LogHeader.COLUMN_CREATED_BY, nullable = false)
     private User createdBy;
 
 	public Long getId() {

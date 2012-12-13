@@ -49,7 +49,7 @@ public class Tool implements Serializable {
     @Column(name = Tool.COLUMN_TOOL_NAME, nullable = false)
     private String name;
 
-    @Column(name = Tool.COLUMN_TYPE)
+    @Column(name = Tool.COLUMN_TYPE, nullable = false)
     @Enumerated(EnumType.STRING)
     private ToolType type;
     

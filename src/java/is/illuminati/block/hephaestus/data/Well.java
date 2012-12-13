@@ -34,6 +34,7 @@ public class Well implements Serializable {
     private static final String COLUMN_PAD = "pad";
     //@TODO Add GIS stuff
     private static final String COLUMN_MEASURED_DEPTH = "measured_depth";
+    //@TODO Add connection to wellhead table
     private static final String COLUMN_CREATED_DATE = "created";
     private static final String COLUMN_CREATED_BY = "created_by";
 
@@ -46,18 +47,18 @@ public class Well implements Serializable {
     private String name;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = Well.COLUMN_PAD)
+    @JoinColumn(name = Well.COLUMN_PAD, nullable = false)
     private Pad pad;
 
     @Column(name = Well.COLUMN_MEASURED_DEPTH)
     private Double measuredDepth;
     
     @Temporal(TemporalType.TIMESTAMP)
-    @Column(name = Well.COLUMN_CREATED_DATE)
+    @Column(name = Well.COLUMN_CREATED_DATE, nullable = false)
     private Date createdDate;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = Well.COLUMN_CREATED_BY)
+    @JoinColumn(name = Well.COLUMN_CREATED_BY, nullable = false)
     private User createdBy;
 
 	public Long getId() {

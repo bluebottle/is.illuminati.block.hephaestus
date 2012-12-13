@@ -10,5 +10,5 @@ public enum ToolType {
 	resistivity, 
 	X_Y_caliper, 
 	casing_inspection, 
-	multifinger_caliper
+	multifinger_caliper,
 }

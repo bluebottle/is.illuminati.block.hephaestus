@@ -30,8 +30,8 @@ public class Pad implements Serializable {
 	public static final String ENTITY_NAME = "hep_pad";
     
     private static final String COLUMN_PAD_ID = "pad_id";
-    private static final String COLUMN_PAD_CODE = "pad_code";
-    private static final String COLUMN_SECTOR = "sector";
+    private static final String COLUMN_PAD_NAME = "pad_name";
+    private static final String COLUMN_PROJECT = "project";
     //@TODO Add GIS stuff
     private static final String COLUMN_REMARKS = "remarks";
     private static final String COLUMN_CREATED_DATE = "created";
@@ -42,22 +42,22 @@ public class Pad implements Serializable {
     @Column(name = Pad.COLUMN_PAD_ID)
     private Long id;
 
-    @Column(name = Pad.COLUMN_PAD_CODE, nullable = false)
-    private String code;
+    @Column(name = Pad.COLUMN_PAD_NAME, nullable = false)
+    private String name;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = Pad.COLUMN_SECTOR)
-    private Sector sector;
+    @JoinColumn(name = Pad.COLUMN_PROJECT, nullable = false)
+    private Project project;
 
     @Column(name = Pad.COLUMN_REMARKS)
     private String remarks;
 
     @Temporal(TemporalType.TIMESTAMP)
-    @Column(name = Pad.COLUMN_CREATED_DATE)
+    @Column(name = Pad.COLUMN_CREATED_DATE, nullable = false)
     private Date createdDate;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = Pad.COLUMN_CREATED_BY)
+    @JoinColumn(name = Pad.COLUMN_CREATED_BY, nullable = false)
     private User createdBy;
 
 	public Long getId() {
@@ -68,20 +68,20 @@ public class Pad implements Serializable {
 		this.id = id;
 	}
 
-	public String getCode() {
-		return code;
+	public String getName() {
+		return name;
 	}
 
-	public void setCode(String code) {
-		this.code = code;
+	public void setName(String name) {
+		this.name = name;
 	}
 
-	public Sector getSector() {
-		return sector;
+	public Project getProject() {
+		return project;
 	}
 
-	public void setSector(Sector sector) {
-		this.sector = sector;
+	public void setProject(Project project) {
+		this.project = project;
 	}
 
 	public String getRemarks() {

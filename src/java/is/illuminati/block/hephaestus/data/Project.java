@@ -30,22 +30,23 @@ public class Project implements Serializable {
 
 	public static final String ENTITY_NAME = "hep_project";
     
-    private static final String COLUMN_PROJECT_ID = "project_id";
-    private static final String COLUMN_PROJECT_CODE = "project_code";
-    private static final String COLUMN_ADDRESS = "address";
+	private static final String COLUMN_PROJECT_ID = "project_id";
+	private static final String COLUMN_PROJECT_NAME = "project_name";
+	private static final String COLUMN_ADDRESS = "address";
     //@TODO Add GIS stuff
     private static final String COLUMN_REMARKS = "remarks";
     private static final String COLUMN_OWNER = "owner";
     private static final String COLUMN_CREATED_DATE = "created";
     private static final String COLUMN_CREATED_BY = "created_by";
-
+    //@TODO Add connection to JackRabbit to store reports
+    
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = Project.COLUMN_PROJECT_ID)
     private Long id;
 
-    @Column(name = Project.COLUMN_PROJECT_CODE, nullable = false)
-    private String code;
+    @Column(name = Project.COLUMN_PROJECT_NAME, nullable = false)
+    private String name;
 
     @Column(name = Project.COLUMN_ADDRESS)
     private String address;
@@ -54,15 +55,15 @@ public class Project implements Serializable {
     private String remarks;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = Project.COLUMN_OWNER)
+    @JoinColumn(name = Project.COLUMN_OWNER, nullable = false)
     private Group owner;
 
     @Temporal(TemporalType.TIMESTAMP)
-    @Column(name = Project.COLUMN_CREATED_DATE)
+    @Column(name = Project.COLUMN_CREATED_DATE, nullable = false)
     private Date createdDate;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = Project.COLUMN_CREATED_BY)
+    @JoinColumn(name = Project.COLUMN_CREATED_BY, nullable = false)
     private User createdBy;
 
 	public Long getId() {
@@ -73,12 +74,12 @@ public class Project implements Serializable {
 		this.id = id;
 	}
 
-	public String getCode() {
-		return code;
+	public String getName() {
+		return name;
 	}
 
-	public void setCode(String code) {
-		this.code = code;
+	public void setName(String code) {
+		this.name = code;
 	}
 
 	public String getAddress() {

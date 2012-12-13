@@ -30,7 +30,7 @@ public class Cellar implements Serializable {
 	public static final String ENTITY_NAME = "hep_cellar";
     
     private static final String COLUMN_CELLAR_ID = "cellar_id";
-    private static final String COLUMN_CELLAR_CODE = "cellar_code";
+    private static final String COLUMN_CELLAR_NAME = "cellar_name";
     private static final String COLUMN_PAD = "pad";
     //@TODO Add GIS stuff
     private static final String COLUMN_CREATED_DATE = "created";
@@ -41,8 +41,8 @@ public class Cellar implements Serializable {
     @Column(name = Cellar.COLUMN_CELLAR_ID)
     private Long id;
 
-    @Column(name = Cellar.COLUMN_CELLAR_CODE, nullable = false)
-    private String code;
+    @Column(name = Cellar.COLUMN_CELLAR_NAME, nullable = false)
+    private String name;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = Cellar.COLUMN_PAD)
@@ -64,12 +64,12 @@ public class Cellar implements Serializable {
 		this.id = id;
 	}
 
-	public String getCode() {
-		return code;
+	public String getName() {
+		return name;
 	}
 
-	public void setCode(String code) {
-		this.code = code;
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	public Pad getPad() {
