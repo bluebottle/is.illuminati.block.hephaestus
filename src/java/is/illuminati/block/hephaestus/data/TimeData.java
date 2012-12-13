@@ -38,14 +38,14 @@ public class TimeData implements Serializable {
     private Long id;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = TimeData.COLUMN_LOG_HEADER)
-    private Well well;
+    @JoinColumn(name = TimeData.COLUMN_LOG_HEADER, nullable = false)
+    private LogHeader header;
 
     @Temporal(TemporalType.TIMESTAMP)
-    @Column(name = TimeData.COLUMN_TIME)
+    @Column(name = TimeData.COLUMN_TIME, nullable = false)
     private Date time;
 
-    @Column(name = TimeData.COLUMN_VALUE)
+    @Column(name = TimeData.COLUMN_VALUE, nullable = false)
     private Double value;
 
 	public Long getId() {
@@ -56,12 +56,12 @@ public class TimeData implements Serializable {
 		this.id = id;
 	}
 
-	public Well getWell() {
-		return well;
+	public LogHeader getHeader() {
+		return header;
 	}
 
-	public void setWell(Well well) {
-		this.well = well;
+	public void setHeader(LogHeader header) {
+		this.header = header;
 	}
 
 	public Date getTime() {

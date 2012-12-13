@@ -184,4 +184,20 @@ public class LogHeader implements Serializable {
 	public void setCreatedBy(User createdBy) {
 		this.createdBy = createdBy;
 	}
+
+	public String getComment() {
+		return comment;
+	}
+
+	public void setComment(String comment) {
+		this.comment = comment;
+	}
+
+	public String getServiceCompnay() {
+		return serviceCompnay;
+	}
+
+	public void setServiceCompnay(String serviceCompnay) {
+		this.serviceCompnay = serviceCompnay;
+	}
 }

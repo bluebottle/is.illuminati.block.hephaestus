@@ -35,13 +35,13 @@ public class DepthData implements Serializable {
     private Long id;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = DepthData.COLUMN_LOG_HEADER)
-    private Well well;
+    @JoinColumn(name = DepthData.COLUMN_LOG_HEADER, nullable = false)
+    private LogHeader header;
 
-    @Column(name = DepthData.COLUMN_DEPTH)
+    @Column(name = DepthData.COLUMN_DEPTH, nullable = false)
     private Double depth;
 
-    @Column(name = DepthData.COLUMN_VALUE)
+    @Column(name = DepthData.COLUMN_VALUE, nullable = false)
     private Double value;
 
 	public Long getId() {
@@ -50,14 +50,6 @@ public class DepthData implements Serializable {
 
 	public void setId(Long id) {
 		this.id = id;
-	}
-
-	public Well getWell() {
-		return well;
-	}
-
-	public void setWell(Well well) {
-		this.well = well;
 	}
 
 	public Double getDepth() {
@@ -74,5 +66,13 @@ public class DepthData implements Serializable {
 
 	public void setValue(Double value) {
 		this.value = value;
+	}
+
+	public LogHeader getHeader() {
+		return header;
+	}
+
+	public void setHeader(LogHeader header) {
+		this.header = header;
 	}
 }
