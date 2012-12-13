@@ -8,6 +8,8 @@
     <entity class="is.illuminati.block.hephaestus.data.Pad" />
     <entity class="is.illuminati.block.hephaestus.data.Project" />
     <entity class="is.illuminati.block.hephaestus.data.Sector" />
+    <entity class="is.illuminati.block.hephaestus.data.Tool" />
+    <entity class="is.illuminati.block.hephaestus.data.Well" />
     
         
 </entity-mappings>
