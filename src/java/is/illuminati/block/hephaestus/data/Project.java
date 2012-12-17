@@ -23,7 +23,8 @@ import com.idega.user.data.bean.User;
 @Entity
 @Table(name = Project.ENTITY_NAME)
 @NamedQueries({
-        @NamedQuery(name = "project.findAll", query = "select p from Project p")
+        @NamedQuery(name = "project.findAll", query = "select p from Project p"),
+        @NamedQuery(name = "project.findByName", query = "select p from Project p where where p.name = :name")
 })
 public class Project implements Serializable {
 	private static final long serialVersionUID = 8600088375547845117L;
@@ -78,8 +79,8 @@ public class Project implements Serializable {
 		return name;
 	}
 
-	public void setName(String code) {
-		this.name = code;
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	public String getAddress() {

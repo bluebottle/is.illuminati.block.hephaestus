@@ -22,7 +22,8 @@ import com.idega.user.data.bean.User;
 @Entity
 @Table(name = Well.ENTITY_NAME)
 @NamedQueries({
-        @NamedQuery(name = "well.findAll", query = "select w from Well w")
+        @NamedQuery(name = "well.findAll", query = "select w from Well w"),
+        @NamedQuery(name = "well.findByName", query = "select w from Well w where where w.name = :name")
 })
 public class Well implements Serializable {
 	private static final long serialVersionUID = 4774660293017194239L;
@@ -37,6 +38,10 @@ public class Well implements Serializable {
     //@TODO Add connection to wellhead table
     private static final String COLUMN_CREATED_DATE = "created";
     private static final String COLUMN_CREATED_BY = "created_by_id";
+    
+    private static final String COLUMN_X = "x";
+    private static final String COLUMN_Y = "y";
+    private static final String COLUMN_Z = "z";
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -61,6 +66,16 @@ public class Well implements Serializable {
     @JoinColumn(name = Well.COLUMN_CREATED_BY, nullable = false)
     private User createdBy;
 
+    @Column(name = Well.COLUMN_X)
+    private Double x;
+
+    @Column(name = Well.COLUMN_Y)
+    private Double y;
+
+    @Column(name = Well.COLUMN_Z)
+    private Double z;
+
+    
 	public Long getId() {
 		return id;
 	}
@@ -107,5 +122,29 @@ public class Well implements Serializable {
 
 	public void setCreatedBy(User createdBy) {
 		this.createdBy = createdBy;
+	}
+
+	public Double getX() {
+		return x;
+	}
+
+	public void setX(Double x) {
+		this.x = x;
+	}
+
+	public Double getY() {
+		return y;
+	}
+
+	public void setY(Double y) {
+		this.y = y;
+	}
+
+	public Double getZ() {
+		return z;
+	}
+
+	public void setZ(Double z) {
+		this.z = z;
 	}   
 }
