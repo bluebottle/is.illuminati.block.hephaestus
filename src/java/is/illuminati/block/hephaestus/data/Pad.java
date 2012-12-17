@@ -31,11 +31,11 @@ public class Pad implements Serializable {
     
     private static final String COLUMN_PAD_ID = "pad_id";
     private static final String COLUMN_PAD_NAME = "pad_name";
-    private static final String COLUMN_PROJECT = "project";
+    private static final String COLUMN_PROJECT = "project_id";
     //@TODO Add GIS stuff
     private static final String COLUMN_REMARKS = "remarks";
     private static final String COLUMN_CREATED_DATE = "created";
-    private static final String COLUMN_CREATED_BY = "created_by";
+    private static final String COLUMN_CREATED_BY = "created_by_id";
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

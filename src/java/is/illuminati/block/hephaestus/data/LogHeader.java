@@ -35,9 +35,9 @@ public class LogHeader implements Serializable {
 	public static final String ENTITY_NAME = "hep_logf";
     
     private static final String COLUMN_LOG_HEADER_ID = "logf_id";
-    private static final String COLUMN_WELL = "well";
-    private static final String COLUMN_CONDITION = "condition";
-    private static final String COLUMN_TOOL = "tool";
+    private static final String COLUMN_WELL = "well_id";
+    private static final String COLUMN_CONDITION = "well_condition";
+    private static final String COLUMN_TOOL = "tool_id";
     private static final String COLUMN_START_DATE = "date_start";
     private static final String COLUMN_END_DATE = "date_end";
     private static final String COLUMN_SHIFT = "shift";
@@ -46,7 +46,7 @@ public class LogHeader implements Serializable {
     private static final String COLUMN_COMMENT = "comment";
     private static final String COLUMN_SERVICE_COMPANY = "service_company";
     private static final String COLUMN_CREATED_DATE = "created";
-    private static final String COLUMN_CREATED_BY = "created_by";
+    private static final String COLUMN_CREATED_BY = "created_by_id";
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

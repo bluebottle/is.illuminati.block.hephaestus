@@ -25,10 +25,10 @@ import javax.persistence.TemporalType;
 public class TimeData implements Serializable {
 	private static final long serialVersionUID = 272483576081403673L;
 
-	public static final String ENTITY_NAME = "hep_ddata";
+	public static final String ENTITY_NAME = "hep_tdata";
     
     private static final String COLUMN_DEPTH_DATA_ID = "ddata_id";
-    private static final String COLUMN_LOG_HEADER = "logf";
+    private static final String COLUMN_LOG_HEADER = "logf_id";
     private static final String COLUMN_TIME = "time";
     private static final String COLUMN_VALUE = "value";
 

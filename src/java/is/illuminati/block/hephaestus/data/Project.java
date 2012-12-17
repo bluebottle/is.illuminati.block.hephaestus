@@ -35,9 +35,9 @@ public class Project implements Serializable {
 	private static final String COLUMN_ADDRESS = "address";
     //@TODO Add GIS stuff
     private static final String COLUMN_REMARKS = "remarks";
-    private static final String COLUMN_OWNER = "owner";
+    private static final String COLUMN_OWNER = "owner_id";
     private static final String COLUMN_CREATED_DATE = "created";
-    private static final String COLUMN_CREATED_BY = "created_by";
+    private static final String COLUMN_CREATED_BY = "created_by_id";
     //@TODO Add connection to JackRabbit to store reports
     
     @Id

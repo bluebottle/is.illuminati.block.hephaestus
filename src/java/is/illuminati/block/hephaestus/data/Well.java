@@ -31,12 +31,12 @@ public class Well implements Serializable {
     
     private static final String COLUMN_WELL_ID = "well_id";
     private static final String COLUMN_WELL_NAME = "name";
-    private static final String COLUMN_PAD = "pad";
+    private static final String COLUMN_PAD = "pad_id";
     //@TODO Add GIS stuff
-    private static final String COLUMN_MEASURED_DEPTH = "measured_depth";
+    private static final String COLUMN_DRILLED_DEPTH = "drilled_depth";
     //@TODO Add connection to wellhead table
     private static final String COLUMN_CREATED_DATE = "created";
-    private static final String COLUMN_CREATED_BY = "created_by";
+    private static final String COLUMN_CREATED_BY = "created_by_id";
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -50,8 +50,8 @@ public class Well implements Serializable {
     @JoinColumn(name = Well.COLUMN_PAD, nullable = false)
     private Pad pad;
 
-    @Column(name = Well.COLUMN_MEASURED_DEPTH)
-    private Double measuredDepth;
+    @Column(name = Well.COLUMN_DRILLED_DEPTH)
+    private Double drilledDepth;
     
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = Well.COLUMN_CREATED_DATE, nullable = false)
@@ -85,12 +85,12 @@ public class Well implements Serializable {
 		this.pad = pad;
 	}
 
-	public Double getMeasuredDepth() {
-		return measuredDepth;
+	public Double getDrilledDepth() {
+		return drilledDepth;
 	}
 
-	public void setMeasuredDepth(Double measuredDepth) {
-		this.measuredDepth = measuredDepth;
+	public void setDrilledDepth(Double drilledDepth) {
+		this.drilledDepth = drilledDepth;
 	}
 
 	public Date getCreatedDate() {

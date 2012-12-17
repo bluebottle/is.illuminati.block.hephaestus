@@ -25,7 +25,7 @@ public class DepthData implements Serializable {
 	public static final String ENTITY_NAME = "hep_ddata";
     
     private static final String COLUMN_DEPTH_DATA_ID = "ddata_id";
-    private static final String COLUMN_LOG_HEADER = "logf";
+    private static final String COLUMN_LOG_HEADER = "logf_id";
     private static final String COLUMN_DEPTH = "depth";
     private static final String COLUMN_VALUE = "value";
 

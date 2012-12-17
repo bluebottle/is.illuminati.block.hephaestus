@@ -31,10 +31,10 @@ public class Cellar implements Serializable {
     
     private static final String COLUMN_CELLAR_ID = "cellar_id";
     private static final String COLUMN_CELLAR_NAME = "cellar_name";
-    private static final String COLUMN_PAD = "pad";
+    private static final String COLUMN_PAD = "pad_id";
     //@TODO Add GIS stuff
     private static final String COLUMN_CREATED_DATE = "created";
-    private static final String COLUMN_CREATED_BY = "created_by";
+    private static final String COLUMN_CREATED_BY = "created_by_id";
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

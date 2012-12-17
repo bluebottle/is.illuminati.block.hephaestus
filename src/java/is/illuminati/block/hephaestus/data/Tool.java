@@ -39,7 +39,7 @@ public class Tool implements Serializable {
     private static final String COLUMN_BRAND = "brand";
     private static final String COLUMN_DESCRIPTION = "description";
     private static final String COLUMN_CREATED_DATE = "created";
-    private static final String COLUMN_CREATED_BY = "created_by";
+    private static final String COLUMN_CREATED_BY = "created_by_id";
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
