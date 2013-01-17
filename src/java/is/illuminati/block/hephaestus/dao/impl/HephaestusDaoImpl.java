@@ -36,6 +36,11 @@ public class HephaestusDaoImpl extends GenericDaoImpl implements HephaestusDao {
 		return getResultList("project.findAll", Project.class);
 	}
 
+	public List<Project> getProjects(Group owner) {
+		Param param1 = new Param("owner", owner);
+		return getResultList("project.findByOwner", Project.class, param1);
+	}
+	
 	@Transactional(readOnly = false)
 	public Project storeProject(Long projectID, String name, String address,
 			String remarks, Group owner, User createdBy) {

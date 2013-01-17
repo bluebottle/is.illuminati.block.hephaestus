@@ -8,7 +8,8 @@ public enum ToolType {
 	neutron, 
 	gamma, 
 	resistivity, 
-	X_Y_caliper, 
+	X_caliper,
+	Y_caliper,
 	casing_inspection, 
 	multifinger_caliper,
 }

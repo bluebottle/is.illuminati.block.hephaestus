@@ -17,7 +17,9 @@ public interface HephaestusDao extends GenericDao {
 	public Project getProject(String name);
 
 	public List<Project> getProject();
-	
+
+	public List<Project> getProjects(Group owner);
+
 	public Project storeProject(Long projectID, String name, String address, String remarks,
 			Group owner, User createdBy);
 
