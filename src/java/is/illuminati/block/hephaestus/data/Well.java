@@ -23,7 +23,7 @@ import com.idega.user.data.bean.User;
 @Table(name = Well.ENTITY_NAME)
 @NamedQueries({
         @NamedQuery(name = "well.findAll", query = "select w from Well w"),
-        @NamedQuery(name = "well.findByName", query = "select w from Well w where where w.name = :name")
+        @NamedQuery(name = "well.findByName", query = "select w from Well w where w.name = :name")
 })
 public class Well implements Serializable {
 	private static final long serialVersionUID = 4774660293017194239L;

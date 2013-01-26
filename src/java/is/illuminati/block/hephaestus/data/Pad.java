@@ -23,7 +23,7 @@ import com.idega.user.data.bean.User;
 @Table(name = Pad.ENTITY_NAME)
 @NamedQueries({
         @NamedQuery(name = "pad.findAll", query = "select p from Pad p"),
-        @NamedQuery(name = "pad.findByName", query = "select p from Pad p where where p.name = :name")
+        @NamedQuery(name = "pad.findByName", query = "select p from Pad p where p.name = :name")
 })
 public class Pad implements Serializable {
 	private static final long serialVersionUID = -8250222613886504560L;
