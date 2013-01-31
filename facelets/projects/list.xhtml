@@ -1,0 +1,37 @@
+<html
+		xmlns:ui="http://java.sun.com/jsf/facelets"
+		xmlns:h="http://java.sun.com/jsf/html"
+		xmlns:f="http://java.sun.com/jsf/core"
+>
+<ui:component>
+	<h1><h:outputText value="#{localizedStrings['is.illuminati.block.hephaestus']['project.projects_list']}" /></h1>
+	<table class="standard">
+		<thead>
+			<tr>
+				<th><h:outputText value="#{localizedStrings['is.illuminati.block.hephaestus']['project.id']}" /></th>
+				<th><h:outputText value="#{localizedStrings['is.illuminati.block.hephaestus']['project.name']}" /></th>
+				<th><h:outputText value="#{localizedStrings['is.illuminati.block.hephaestus']['project.address']}" /></th>
+				<th><h:outputText value="#{localizedStrings['is.illuminati.block.hephaestus']['project.created_date']}" /></th>
+				<th></th>
+			</tr>
+		</thead>
+		
+		<tbody>
+			<ui:repeat value="#{hephaestusBean.projects}" var="project">
+				<tr>
+					<td><h:outputText value="#{project.id}" /></td>
+					<td><h:outputText value="#{project.name}" /></td>
+					<td><h:outputText value="#{project.address}" /></td>
+					<td><h:outputText value="#{project.createdDate}" /></td>
+					<td>
+						<h:outputLink value="/pages/pads/">
+							<f:param name="prm_project_id" value="#{project.id}" />
+							<span><h:outputText value="#{localizedStrings['is.illuminati.block.hephaestus']['view']}" /></span>
+						</h:outputLink>
+					</td>
+				</tr>
+			</ui:repeat>
+		</tbody>
+	</table>
+</ui:component>
+</html>

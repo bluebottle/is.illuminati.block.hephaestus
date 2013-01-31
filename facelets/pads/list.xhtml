@@ -1,0 +1,37 @@
+<html
+		xmlns:ui="http://java.sun.com/jsf/facelets"
+		xmlns:h="http://java.sun.com/jsf/html"
+		xmlns:f="http://java.sun.com/jsf/core"
+>
+<ui:component>
+	<h1><h:outputText value="#{localizedStrings['is.illuminati.block.hephaestus']['pad.pads_list']}" /></h1>
+	<table class="standard">
+		<thead>
+			<tr>
+				<th><h:outputText value="#{localizedStrings['is.illuminati.block.hephaestus']['pad.id']}" /></th>
+				<th><h:outputText value="#{localizedStrings['is.illuminati.block.hephaestus']['pad.name']}" /></th>
+				<th><h:outputText value="#{localizedStrings['is.illuminati.block.hephaestus']['pad.created_date']}" /></th>
+				<th><h:outputText value="#{localizedStrings['is.illuminati.block.hephaestus']['pad.remarks']}" /></th>
+				<th></th>
+			</tr>
+		</thead>
+		
+		<tbody>
+			<ui:repeat value="#{hephaestusBean.pads}" var="pad">
+				<tr>
+					<td><h:outputText value="#{pad.id}" /></td>
+					<td><h:outputText value="#{pad.name}" /></td>
+					<td><h:outputText value="#{pad.createdDate}" /></td>
+					<td><h:outputText value="#{pad.remarks}" /></td>
+					<td>
+						<h:outputLink value="/pages/pads/wells/">
+							<f:param name="prm_pad_id" value="#{pad.id}" />
+							<span><h:outputText value="#{localizedStrings['is.illuminati.block.hephaestus']['view']}" /></span>
+						</h:outputLink>
+					</td>
+				</tr>
+			</ui:repeat>
+		</tbody>
+	</table>
+</ui:component>
+</html>

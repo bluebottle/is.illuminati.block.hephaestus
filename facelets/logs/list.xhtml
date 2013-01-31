@@ -1,0 +1,51 @@
+<html
+		xmlns:ui="http://java.sun.com/jsf/facelets"
+		xmlns:h="http://java.sun.com/jsf/html"
+		xmlns:f="http://java.sun.com/jsf/core"
+>
+<ui:component>
+	<h1><h:outputText value="#{localizedStrings['is.illuminati.block.hephaestus']['log.log_headers']}" /></h1>
+	<table class="standard">
+		<thead>
+			<tr>
+				<th><h:outputText value="#{localizedStrings['is.illuminati.block.hephaestus']['log.id']}" /></th>
+				<th><h:outputText value="#{localizedStrings['is.illuminati.block.hephaestus']['log.logging_condition']}" /></th>
+				<th><h:outputText value="#{localizedStrings['is.illuminati.block.hephaestus']['log.tool']}" /></th>
+				<th><h:outputText value="#{localizedStrings['is.illuminati.block.hephaestus']['log.start_date']}" /></th>
+				<th><h:outputText value="#{localizedStrings['is.illuminati.block.hephaestus']['log.end_date']}" /></th>
+				<th><h:outputText value="#{localizedStrings['is.illuminati.block.hephaestus']['log.shift']}" /></th>
+				<th><h:outputText value="#{localizedStrings['is.illuminati.block.hephaestus']['log.log_direction']}" /></th>
+				<th><h:outputText value="#{localizedStrings['is.illuminati.block.hephaestus']['log.engineers']}" /></th>
+				<th><h:outputText value="#{localizedStrings['is.illuminati.block.hephaestus']['log.comment']}" /></th>
+				<th><h:outputText value="#{localizedStrings['is.illuminati.block.hephaestus']['log.service_company']}" /></th>
+				<th><h:outputText value="#{localizedStrings['is.illuminati.block.hephaestus']['log.created_date']}" /></th>
+				<!-- th></th -->
+			</tr>
+		</thead>
+		
+		<tbody>
+			<ui:repeat value="#{hephaestusBean.logs}" var="log">
+				<tr>
+					<td><h:outputText value="#{log.id}" /></td>
+					<td><h:outputText value="#{log.condition}" /></td>
+					<td><h:outputText value="#{log.tool.name}" /></td>
+					<td><h:outputText value="#{log.startDate}" /></td>
+					<td><h:outputText value="#{log.endDate}" /></td>
+					<td><h:outputText value="#{log.shift}" /></td>
+					<td><h:outputText value="#{log.logDirection}" /></td>
+					<td><h:outputText value="#{log.engineers}" /></td>
+					<td><h:outputText value="#{log.comment}" /></td>
+					<td><h:outputText value="#{log.serviceCompnay}" /></td>
+					<td><h:outputText value="#{log.createdDate}" /></td>
+					<!-- td>
+						<h:outputLink value="/pages/pads/wells/logs/">
+							<f:param name="prm_well_id" value="#{log.id}" />
+							<span><h:outputText value="#{localizedStrings['is.illuminati.block.hephaestus']['view']}" /></span>
+						</h:outputLink>
+					</td -->
+				</tr>
+			</ui:repeat>
+		</tbody>
+	</table>
+</ui:component>
+</html>

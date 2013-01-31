@@ -1,6 +1,7 @@
 package is.illuminati.block.hephaestus.dao.impl;
 
 import is.illuminati.block.hephaestus.dao.HephaestusDao;
+import is.illuminati.block.hephaestus.data.LogHeader;
 import is.illuminati.block.hephaestus.data.Pad;
 import is.illuminati.block.hephaestus.data.Project;
 import is.illuminati.block.hephaestus.data.Well;
@@ -83,6 +84,9 @@ public class HephaestusDaoImpl extends GenericDaoImpl implements HephaestusDao {
 	}
 
 	public List<Pad> getPads(Project project) {
+		if (project != null)
+			return getResultList("pad.findByProject", Pad.class, new Param("project", project));
+		
 		return getResultList("pad.findAll", Pad.class);
 	}
 
@@ -127,6 +131,9 @@ public class HephaestusDaoImpl extends GenericDaoImpl implements HephaestusDao {
 	}
 
 	public List<Well> getWells(Pad pad) {
+		if (pad != null)
+			return getResultList("well.findByPad", Well.class, new Param("pad", pad));
+		
 		return getResultList("well.findAll", Well.class);
 	}
 
@@ -163,4 +170,7 @@ public class HephaestusDaoImpl extends GenericDaoImpl implements HephaestusDao {
 		return false;
 	}
 
+	public List<LogHeader> getLogHeaders(Well well) {
+		return getResultList("logHeader.findAllByWell", LogHeader.class, new Param("well", well));
+	}
 }

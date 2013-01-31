@@ -1,0 +1,29 @@
+.main h1 {
+  font-size: 1.25em;
+  margin-bottom: 1em;
+}
+
+table.standard {
+	text-align: left;
+  width: 100%;
+}
+
+table.standard thead tr th {
+	border-top: 1px #ccc solid;
+	border-bottom: 1px #ccc solid;
+	font-weight: bold;
+	line-height: 1.25em;
+	padding: 4px 5px;
+	border-right: 1px #eee solid;
+}
+
+table.standard tbody tr td {
+	border-bottom: 1px #efefef solid;
+	line-height: 1.25em;
+	padding: 4px 5px;
+	border-right: 1px #eee solid;
+}
+
+table.standard tr *:last-child {
+	border-right: 0;
+}

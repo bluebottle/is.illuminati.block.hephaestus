@@ -27,7 +27,8 @@ import com.idega.user.data.bean.User;
 @Entity
 @Table(name = LogHeader.ENTITY_NAME)
 @NamedQueries({
-        @NamedQuery(name = "logHeader.findAll", query = "select l from LogHeader l")
+        @NamedQuery(name = "logHeader.findAll", query = "select l from LogHeader l"),
+        @NamedQuery(name = "logHeader.findAllByWell", query = "select l from LogHeader l where l.well = :well")
 })
 public class LogHeader implements Serializable {
 	private static final long serialVersionUID = -6302012344163641698L;
@@ -197,7 +198,7 @@ public class LogHeader implements Serializable {
 		return serviceCompnay;
 	}
 
-	public void setServiceCompnay(String serviceCompnay) {
-		this.serviceCompnay = serviceCompnay;
+	public void setServiceCompnay(String serviceCompany) {
+		this.serviceCompnay = serviceCompany;
 	}
 }
