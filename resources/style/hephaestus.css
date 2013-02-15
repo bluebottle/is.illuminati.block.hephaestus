@@ -27,3 +27,7 @@ table.standard tbody tr td {
 table.standard tr *:last-child {
 	border-right: 0;
 }
+
+.map_canvas {
+	height: 500px;
+}

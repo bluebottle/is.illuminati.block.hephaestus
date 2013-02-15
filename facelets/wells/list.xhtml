@@ -5,6 +5,12 @@
 >
 <ui:component>
 	<h1><h:outputText value="#{localizedStrings['is.illuminati.block.hephaestus']['well.wells_list']}" /></h1>
+	
+	<ui:component rendered="#{not empty hephaestusBean.projectId}">
+		<input type="hidden" name="prm_project_id" value="#{hephaestusBean.projectId}" />
+		<div class="map_canvas"></div>
+	</ui:component>
+	
 	<table class="standard">
 		<thead>
 			<tr>

@@ -43,6 +43,8 @@ public interface HephaestusDao extends GenericDao {
 	
 	public List<Well> getWells(Pad pad);
 	
+	public List<Well> getWells(Project project);
+
 	public Well storeWell(Long wellID, String name, Pad pad, Double depth,
 			Double gis_x, Double gis_y, Double gis_z, User createdBy);
 	

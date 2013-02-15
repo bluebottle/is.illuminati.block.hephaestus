@@ -16,6 +16,9 @@ public class HephaestusBean {
 
 	private String responseURL;
 	
+	private Long projectId;
+	private Long padId;
+	
 	private List<Project> projects;
 	private List<Pad> pads;
 	private List<Well> wells;
@@ -27,6 +30,22 @@ public class HephaestusBean {
 
 	public void setResponseURL(String responseURL) {
 		this.responseURL = responseURL;
+	}
+
+	public Long getProjectId() {
+		return projectId;
+	}
+
+	public void setProjectId(Long projectId) {
+		this.projectId = projectId;
+	}
+
+	public Long getPadId() {
+		return padId;
+	}
+
+	public void setPadId(Long padId) {
+		this.padId = padId;
 	}
 
 	public List<Project> getProjects() {

@@ -4,6 +4,7 @@ import is.illuminati.block.hephaestus.HephaestusConstants;
 import is.illuminati.block.hephaestus.business.HephaestusBean;
 import is.illuminati.block.hephaestus.dao.HephaestusDao;
 import is.illuminati.block.hephaestus.data.Pad;
+import is.illuminati.block.hephaestus.data.Project;
 import is.illuminati.block.hephaestus.data.Well;
 
 import java.rmi.RemoteException;
@@ -13,6 +14,8 @@ import javax.faces.context.FacesContext;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.idega.block.web2.business.JQuery;
+import com.idega.block.web2.business.Web2Business;
 import com.idega.builder.business.BuilderLogicWrapper;
 import com.idega.business.IBORuntimeException;
 import com.idega.core.builder.data.ICPage;
@@ -26,9 +29,16 @@ import com.idega.util.expression.ELUtil;
 public class WellsList extends IWBaseComponent {
 
 	private static final String PARAMETER_PAD_ID = "prm_pad_id";
+	private static final String PARAMETER_PROJECT_ID = "prm_project_id";
 	
 	@Autowired
 	private HephaestusDao dao;
+	
+	@Autowired
+	private Web2Business web2Business;
+	
+	@Autowired
+	private JQuery jQuery;
 	
 	@Autowired
 	private BuilderLogicWrapper builderLogicWrapper;
@@ -41,16 +51,29 @@ public class WellsList extends IWBaseComponent {
 		IWContext iwc = IWContext.getIWContext(context);
 		iwb = getBundle(context, getBundleIdentifier());
 		
-		if (iwc.isLoggedOn() && iwc.isParameterSet(PARAMETER_PAD_ID)) {
+		if (iwc.isLoggedOn() && (iwc.isParameterSet(PARAMETER_PAD_ID) || iwc.isParameterSet(PARAMETER_PROJECT_ID))) {
+			PresentationUtil.addJavaScriptSourceLineToHeader(iwc, getWeb2Business().getScriptURLForGoogleMaps());
+			PresentationUtil.addJavaScriptSourceLineToHeader(iwc, getJQuery().getBundleURIToJQueryLib());
+			PresentationUtil.addJavaScriptSourceLineToHeader(iwc, iwb.getVirtualPathWithFileNameString("javascript/wellsList.js"));
+			
 			PresentationUtil.addStyleSheetToHeader(iwc, iwb.getVirtualPathWithFileNameString("style/hephaestus.css"));
 
-			Long padId = Long.parseLong(iwc.getParameter(PARAMETER_PAD_ID));
-			Pad pad = getDao().getPad(padId);
+			Long padId = iwc.isParameterSet(PARAMETER_PAD_ID) ? Long.parseLong(iwc.getParameter(PARAMETER_PAD_ID)) : null;
+			Pad pad = padId != null ? getDao().getPad(padId) : null;
 			
-			List<Well> wells = getDao().getWells(pad);
+			Long projectId = iwc.isParameterSet(PARAMETER_PROJECT_ID) ? Long.parseLong(iwc.getParameter(PARAMETER_PROJECT_ID)) : null;
+			Project project = projectId != null ? getDao().getProject(projectId) : null;
+			
+			List<Well> wells = pad != null ? getDao().getWells(pad) : getDao().getWells(project);
 			
 			HephaestusBean bean = getBeanInstance("hephaestusBean");
 			bean.setWells(wells);
+			if (pad != null) {
+				bean.setPadId(pad.getId());
+			}
+			if (project != null) {
+				bean.setProjectId(project.getId());
+			}
 			
 			if (responsePage != null) {
 				try {
@@ -77,6 +100,22 @@ public class WellsList extends IWBaseComponent {
 		}
 		
 		return dao;
+	}
+	
+	private Web2Business getWeb2Business() {
+		if (web2Business == null) {
+			ELUtil.getInstance().autowire(this);
+		}
+		
+		return web2Business;
+	}
+	
+	private JQuery getJQuery() {
+		if (jQuery == null) {
+			ELUtil.getInstance().autowire(this);
+		}
+		
+		return jQuery;
 	}
 	
 	private BuilderLogicWrapper getBuilderLogicWrapper() {

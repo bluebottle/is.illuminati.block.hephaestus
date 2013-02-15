@@ -136,6 +136,13 @@ public class HephaestusDaoImpl extends GenericDaoImpl implements HephaestusDao {
 		
 		return getResultList("well.findAll", Well.class);
 	}
+	
+	public List<Well> getWells(Project project) {
+		if (project != null)
+			return getResultList("well.findByProject", Well.class, new Param("project", project));
+		
+		return getResultList("well.findAll", Well.class);
+	}
 
 	@Transactional(readOnly = false)
 	public Well storeWell(Long wellID, String name, Pad pad, Double depth,
