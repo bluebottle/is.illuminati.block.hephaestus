@@ -1,5 +1,6 @@
 package is.illuminati.block.hephaestus.rest;
 
+import is.illuminati.block.hephaestus.business.CoordinateConversion;
 import is.illuminati.block.hephaestus.dao.HephaestusDao;
 import is.illuminati.block.hephaestus.data.Project;
 import is.illuminati.block.hephaestus.rest.pojo.Well;
@@ -30,13 +31,17 @@ public class Wells {
 		Project project = getDao().getProject(projectId);
 		List<is.illuminati.block.hephaestus.data.Well> wells = getDao().getWells(project);
 		
+		CoordinateConversion conversion = new CoordinateConversion();
+		
 		List<Well> pojoWells = new ArrayList<Well>();
 		for (is.illuminati.block.hephaestus.data.Well well : wells) {
 			Well pojo = new Well();
 			pojo.setId(well.getId());
 			pojo.setName(well.getName());
-			pojo.setLatitude("0");
-			pojo.setLongitude("0");
+			
+			double[] latLong = conversion.utm2LatLon(well.getX(), well.getY(), well.getZone(), well.getLatzone());
+			pojo.setLatitude(String.valueOf(latLong[0]));
+			pojo.setLongitude(String.valueOf(latLong[1]));
 			
 			pojoWells.add(pojo);
 		}

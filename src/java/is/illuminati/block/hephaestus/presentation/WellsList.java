@@ -70,6 +70,7 @@ public class WellsList extends IWBaseComponent {
 			bean.setWells(wells);
 			if (pad != null) {
 				bean.setPadId(pad.getId());
+				bean.setProjectId(pad.getProject().getId());
 			}
 			if (project != null) {
 				bean.setProjectId(project.getId());

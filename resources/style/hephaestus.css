@@ -28,6 +28,7 @@ table.standard tr *:last-child {
 	border-right: 0;
 }
 
-.map_canvas {
+#map_canvas {
 	height: 500px;
+	margin-bottom: 24px;
 }
