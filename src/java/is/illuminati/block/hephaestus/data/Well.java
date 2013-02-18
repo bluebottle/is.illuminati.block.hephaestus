@@ -44,6 +44,8 @@ public class Well implements Serializable {
     private static final String COLUMN_X = "x";
     private static final String COLUMN_Y = "y";
     private static final String COLUMN_Z = "z";
+    private static final String COLUMN_ZONE = "zone";
+    private static final String COLUMN_LATZONE = "latzone";
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -76,6 +78,12 @@ public class Well implements Serializable {
 
     @Column(name = Well.COLUMN_Z)
     private Double z;
+
+    @Column(name = Well.COLUMN_ZONE)
+    private Double zone;
+
+    @Column(name = Well.COLUMN_LATZONE)
+    private Double latzone;
 
     
 	public Long getId() {
