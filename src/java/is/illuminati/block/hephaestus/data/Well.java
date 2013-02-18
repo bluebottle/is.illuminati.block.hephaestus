@@ -80,10 +80,10 @@ public class Well implements Serializable {
     private Double z;
 
     @Column(name = Well.COLUMN_ZONE)
-    private Double zone;
+    private String zone;
 
     @Column(name = Well.COLUMN_LATZONE)
-    private Double latzone;
+    private String latzone;
 
     
 	public Long getId() {
@@ -156,5 +156,21 @@ public class Well implements Serializable {
 
 	public void setZ(Double z) {
 		this.z = z;
+	}
+
+	public String getZone() {
+		return zone;
+	}
+
+	public void setZone(String zone) {
+		this.zone = zone;
+	}
+
+	public String getLatzone() {
+		return latzone;
+	}
+
+	public void setLatzone(String latzone) {
+		this.latzone = latzone;
 	}   
 }
