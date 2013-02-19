@@ -4,6 +4,7 @@ package is.illuminati.block.hephaestus.dao;
 import is.illuminati.block.hephaestus.data.LogHeader;
 import is.illuminati.block.hephaestus.data.Pad;
 import is.illuminati.block.hephaestus.data.Project;
+import is.illuminati.block.hephaestus.data.Tool;
 import is.illuminati.block.hephaestus.data.Well;
 
 import java.util.List;
@@ -51,4 +52,6 @@ public interface HephaestusDao extends GenericDao {
 	public boolean removeWell(Long wellID);
 	
 	public List<LogHeader> getLogHeaders(Well well);
+	
+	public List<Tool> getTools();
 }

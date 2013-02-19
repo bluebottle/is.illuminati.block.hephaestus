@@ -4,6 +4,7 @@ import is.illuminati.block.hephaestus.dao.HephaestusDao;
 import is.illuminati.block.hephaestus.data.LogHeader;
 import is.illuminati.block.hephaestus.data.Pad;
 import is.illuminati.block.hephaestus.data.Project;
+import is.illuminati.block.hephaestus.data.Tool;
 import is.illuminati.block.hephaestus.data.Well;
 
 import java.util.List;
@@ -179,5 +180,9 @@ public class HephaestusDaoImpl extends GenericDaoImpl implements HephaestusDao {
 
 	public List<LogHeader> getLogHeaders(Well well) {
 		return getResultList("logHeader.findAllByWell", LogHeader.class, new Param("well", well));
+	}
+	
+	public List<Tool> getTools() {
+		return getResultList("tool.findAll", Tool.class);
 	}
 }

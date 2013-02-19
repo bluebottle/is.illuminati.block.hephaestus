@@ -69,7 +69,7 @@ public class WellLogImport extends IWBaseComponent {
 		WellLogImportBean bean = getBeanInstance("wellLogImportBean");
 		Project project = null;
 		bean.setWells(getDao().getWells(project));
-		//bean.setTools(getDao().get)
+		bean.setTools(getDao().getTools());
 
 		switch (parseAction(iwc)) {
 		case ACTION_SELECT_FILE:

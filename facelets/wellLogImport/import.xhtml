@@ -25,7 +25,24 @@
 					</c:selectOne>
 				</div>
 			</ui:fragment>
+
+			<ui:fragment rendered="#{not empty wellLogImportBean.tools}">
+				<div class="formItem required">
+					<label for="prm_tool_pk"><h:outputText value="#{localizedStrings['is.illuminati.block.hephaestus']['tool']}" /></label>
+					<c:selectOne styleClass="required" name="prm_tool_pk">
+						<c:selectOption name="#{localizedStrings['is.illuminati.block.hephaestus']['select_tool']}" content="" />
+						<ui:repeat value="#{wellLogImportBean.tools}" var="tools">
+							<c:selectOption name="#{p:concat(tool.name , p:concat(" - ", tool.type))}" content="#{tool.id}" />
+						</ui:repeat>
+					</c:selectOne>
+				</div>
+			</ui:fragment>
 		
+			<div class="formItem required">
+					<label for="prm_logdirection"><h:outputText value="#{localizedStrings['is.illuminati.block.hephaestus']['logdirection']}" /></label>
+					<input type="text" class="required" name="prm_logdirection" />
+			</div>
+				
 			<div class="formItem">
 				<label for="fileupload"><h:outputText value="#{localizedStrings['is.illuminati.block.hephaestus']['excel']}" /></label>
 				<input type="file" name="fileupload" />
