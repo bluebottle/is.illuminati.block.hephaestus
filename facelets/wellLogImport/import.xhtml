@@ -1,0 +1,40 @@
+<html
+		xmlns:ui="http://java.sun.com/jsf/facelets"
+		xmlns:h="http://java.sun.com/jsf/html"
+		xmlns:c="http://xmlns.idega.com/com.idega.core"
+		xmlns:t="http://myfaces.apache.org/tomahawk"
+		xmlns:a="http://xmlns.idega.com/is.idega.idegaweb.egov.application"
+		xmlns:f="http://java.sun.com/jsf/core"
+		xmlns:p="http://xmlns.idega.com/is.illuminati.block.hephaestus"
+>
+<ui:component>
+	<form class="adminForm" action="" method="post" enctype="multipart/form-data">
+		<input type="hidden" name="prm_action" value="1" />
+
+		<h1><h:outputText value="#{localizedStrings['is.illuminati.block.hephaestus']['welllog_import']}" /></h1>
+				
+		<fieldset>
+			<ui:fragment rendered="#{not empty wellLogImportBean.wells}">
+				<div class="formItem required">
+					<label for="prm_well_pk"><h:outputText value="#{localizedStrings['is.illuminati.block.hephaestus']['well']}" /></label>
+					<c:selectOne styleClass="required" name="prm_well_pk">
+						<c:selectOption name="#{localizedStrings['is.illuminati.block.hephaestus']['select_well']}" content="" />
+						<ui:repeat value="#{wellLogImportBean.wells}" var="well">
+							<c:selectOption name="#{well.name}" content="#{well.id}" />
+						</ui:repeat>
+					</c:selectOne>
+				</div>
+			</ui:fragment>
+		
+			<div class="formItem">
+				<label for="fileupload"><h:outputText value="#{localizedStrings['is.illuminati.block.hephaestus']['excel']}" /></label>
+				<input type="file" name="fileupload" />
+			</div>
+					
+			<div class="submit">
+				<a href="#" class="next" rel="2"><span><h:outputText value="#{localizedStrings['is.illuminati.block.hephaestus']['next']}" /></span></a>
+			</div>
+		</fieldset>
+	</form>
+</ui:component>
+</html>
