@@ -31,8 +31,8 @@
 					<label for="prm_tool_pk"><h:outputText value="#{localizedStrings['is.illuminati.block.hephaestus']['tool']}" /></label>
 					<c:selectOne styleClass="required" name="prm_tool_pk">
 						<c:selectOption name="#{localizedStrings['is.illuminati.block.hephaestus']['select_tool']}" content="" />
-						<ui:repeat value="#{wellLogImportBean.tools}" var="tools">
-							<c:selectOption name="#{p:concat(tool.name , p:concat(" - ", tool.type))}" content="#{tool.id}" />
+						<ui:repeat value="#{wellLogImportBean.tools}" var="tool">
+							<c:selectOption name="#{tool.description}" content="#{tool.id}" />
 						</ui:repeat>
 					</c:selectOne>
 				</div>
