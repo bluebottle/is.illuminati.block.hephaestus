@@ -2,9 +2,16 @@ package is.illuminati.block.hephaestus.presentation;
 
 import is.illuminati.block.hephaestus.HephaestusConstants;
 import is.illuminati.block.hephaestus.bean.WellLogImportBean;
+import is.illuminati.block.hephaestus.business.DepthUnit;
 import is.illuminati.block.hephaestus.business.HephaestusService;
+import is.illuminati.block.hephaestus.business.LoggingCondition;
+import is.illuminati.block.hephaestus.business.LoggingDirection;
+import is.illuminati.block.hephaestus.business.PressureUnit;
+import is.illuminati.block.hephaestus.business.TemperatureUnit;
 import is.illuminati.block.hephaestus.dao.HephaestusDao;
 import is.illuminati.block.hephaestus.data.Project;
+
+import java.util.Arrays;
 
 import javax.faces.context.FacesContext;
 
@@ -70,7 +77,12 @@ public class WellLogImport extends IWBaseComponent {
 		Project project = null;
 		bean.setWells(getDao().getWells(project));
 		bean.setTools(getDao().getTools());
-
+		bean.setDepthUnits(Arrays.asList(DepthUnit.values()));
+		bean.setTemperatureUnits(Arrays.asList(TemperatureUnit.values()));
+		bean.setPressureUnits(Arrays.asList(PressureUnit.values()));
+		bean.setConditions(Arrays.asList(LoggingCondition.values()));
+		bean.setDirections(Arrays.asList(LoggingDirection.values()));
+		
 		switch (parseAction(iwc)) {
 		case ACTION_SELECT_FILE:
 			showImportForm(iwc);

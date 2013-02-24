@@ -26,6 +26,18 @@
 				</div>
 			</ui:fragment>
 
+			<ui:fragment rendered="#{not empty wellLogImportBean.conditions}">
+				<div class="formItem required">
+					<label for="prm_condition_pk"><h:outputText value="#{localizedStrings['is.illuminati.block.hephaestus']['condition']}" /></label>
+					<c:selectOne styleClass="required" name="prm_condition_pk">
+						<c:selectOption name="#{localizedStrings['is.illuminati.block.hephaestus']['select_condition']}" content="" />
+						<ui:repeat value="#{wellLogImportBean.condition}" var="condition">
+							<c:selectOption name="#{condition.name}" content="#{condition.name}" />
+						</ui:repeat>
+					</c:selectOne>
+				</div>
+			</ui:fragment>
+
 			<ui:fragment rendered="#{not empty wellLogImportBean.tools}">
 				<div class="formItem required">
 					<label for="prm_tool_pk"><h:outputText value="#{localizedStrings['is.illuminati.block.hephaestus']['tool']}" /></label>
@@ -37,11 +49,85 @@
 					</c:selectOne>
 				</div>
 			</ui:fragment>
-		
+
 			<div class="formItem required">
-					<label for="prm_logdirection"><h:outputText value="#{localizedStrings['is.illuminati.block.hephaestus']['logdirection']}" /></label>
-					<input type="text" class="required" name="prm_logdirection" />
+				<label for="prm_start_date"><h:outputText value="#{localizedStrings['is.illuminati.block.hephaestus']['start_date']}" /></label>
+				<input class="datePicker required" name="prm_start_date" value="#{p:formatDate(wellLogImportBean.startDate, 'dd.MM.yyyy HH:mm')}" />
 			</div>
+
+			<div class="formItem required">
+				<label for="prm_end_date"><h:outputText value="#{localizedStrings['is.illuminati.block.hephaestus']['end_date']}" /></label>
+				<input class="datePicker required" name="prm_end_date" value="#{p:formatDate(wellLogImportBean.endDate, 'dd.MM.yyyy HH:mm')}" />
+			</div>
+
+			<div class="formItem required">
+					<label for="prm_shift"><h:outputText value="#{localizedStrings['is.illuminati.block.hephaestus']['shift']}" /></label>
+					<input type="text" class="required" name="prm_shift" />
+			</div>
+		
+			<ui:fragment rendered="#{not empty wellLogImportBean.directions}">
+				<div class="formItem required">
+					<label for="prm_direction_pk"><h:outputText value="#{localizedStrings['is.illuminati.block.hephaestus']['direction']}" /></label>
+					<c:selectOne styleClass="required" name="prm_direction_pk">
+						<c:selectOption name="#{localizedStrings['is.illuminati.block.hephaestus']['select_direction']}" content="" />
+						<ui:repeat value="#{wellLogImportBean.directions}" var="direction">
+							<c:selectOption name="#{direction.name}" content="#{direction.name}" />
+						</ui:repeat>
+					</c:selectOne>
+				</div>
+			</ui:fragment>
+
+			<div class="formItem required">
+					<label for="prm_engineers"><h:outputText value="#{localizedStrings['is.illuminati.block.hephaestus']['engineers']}" /></label>
+					<input type="text" class="required" name="prm_engineers" />
+			</div>
+
+			<div class="formItem required">
+					<label for="prm_comment"><h:outputText value="#{localizedStrings['is.illuminati.block.hephaestus']['comment']}" /></label>
+					<input type="text" class="required" name="prm_comment" />
+			</div>
+
+			<div class="formItem required">
+					<label for="prm_service_company"><h:outputText value="#{localizedStrings['is.illuminati.block.hephaestus']['service_company']}" /></label>
+					<input type="text" class="required" name="prm_service_company" />
+			</div>
+
+			<ui:fragment rendered="#{not empty wellLogImportBean.depthUnits}">
+				<div class="formItem required">
+					<label for="prm_depth_pk"><h:outputText value="#{localizedStrings['is.illuminati.block.hephaestus']['depth_unit']}" /></label>
+					<c:selectOne styleClass="required" name="prm_depth_pk">
+						<c:selectOption name="#{localizedStrings['is.illuminati.block.hephaestus']['select_depth_unit']}" content="" />
+						<ui:repeat value="#{wellLogImportBean.depthUnits}" var="depthUnit">
+							<c:selectOption name="#{depthUnit.name}" content="#{depthUnit.name}" />
+						</ui:repeat>
+					</c:selectOne>
+				</div>
+			</ui:fragment>
+
+			<ui:fragment rendered="#{not empty wellLogImportBean.temperatureUnits}">
+				<div class="formItem required">
+					<label for="prm_temperature_pk"><h:outputText value="#{localizedStrings['is.illuminati.block.hephaestus']['temperature_unit']}" /></label>
+					<c:selectOne styleClass="required" name="prm_temperature_pk">
+						<c:selectOption name="#{localizedStrings['is.illuminati.block.hephaestus']['select_temperature_unit']}" content="" />
+						<ui:repeat value="#{wellLogImportBean.temperatureUnits}" var="temperatureUnit">
+							<c:selectOption name="#{temperatureUnit.name}" content="#{temperatureUnit.name}" />
+						</ui:repeat>
+					</c:selectOne>
+				</div>
+			</ui:fragment>
+
+			<ui:fragment rendered="#{not empty wellLogImportBean.pressureUnits}">
+				<div class="formItem required">
+					<label for="prm_pressure_pk"><h:outputText value="#{localizedStrings['is.illuminati.block.hephaestus']['pressure_unit']}" /></label>
+					<c:selectOne styleClass="required" name="prm_pressure_pk">
+						<c:selectOption name="#{localizedStrings['is.illuminati.block.hephaestus']['select_pressure_unit']}" content="" />
+						<ui:repeat value="#{wellLogImportBean.pressureUnits}" var="pressureUnit">
+							<c:selectOption name="#{pressureUnit.name}" content="#{pressureUnit.name}" />
+						</ui:repeat>
+					</c:selectOne>
+				</div>
+			</ui:fragment>
+
 				
 			<div class="formItem">
 				<label for="fileupload"><h:outputText value="#{localizedStrings['is.illuminati.block.hephaestus']['excel']}" /></label>
