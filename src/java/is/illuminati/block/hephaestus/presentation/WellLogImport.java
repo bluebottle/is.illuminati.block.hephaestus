@@ -24,6 +24,7 @@ import com.idega.idegaweb.IWBundle;
 import com.idega.presentation.IWBaseComponent;
 import com.idega.presentation.IWContext;
 import com.idega.util.CoreConstants;
+import com.idega.util.IWTimestamp;
 import com.idega.util.PresentationUtil;
 import com.idega.util.expression.ELUtil;
 
@@ -82,6 +83,8 @@ public class WellLogImport extends IWBaseComponent {
 		bean.setPressureUnits(Arrays.asList(PressureUnit.values()));
 		bean.setConditions(Arrays.asList(LoggingCondition.values()));
 		bean.setDirections(Arrays.asList(LoggingDirection.values()));
+		bean.setStartDate(IWTimestamp.getTimestampRightNow());
+		bean.setEndDate(IWTimestamp.getTimestampRightNow());
 		
 		switch (parseAction(iwc)) {
 		case ACTION_SELECT_FILE:
