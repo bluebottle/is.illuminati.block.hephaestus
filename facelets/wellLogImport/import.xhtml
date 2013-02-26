@@ -31,7 +31,7 @@
 					<c:selectOne styleClass="required" name="prm_condition_pk">
 						<c:selectOption name="#{localizedStrings['is.illuminati.block.hephaestus']['select_condition']}" content="" />
 						<ui:repeat value="#{wellLogImportBean.condition}" var="condition">
-							<c:selectOption name="#{condition.name}" content="#{condition.name}" />
+							<c:selectOption name="#{condition}" content="#{condition}" />
 						</ui:repeat>
 					</c:selectOne>
 				</div>
@@ -70,7 +70,7 @@
 					<c:selectOne styleClass="required" name="prm_direction_pk">
 						<c:selectOption name="#{localizedStrings['is.illuminati.block.hephaestus']['select_direction']}" content="" />
 						<ui:repeat value="#{wellLogImportBean.directions}" var="direction">
-							<c:selectOption name="#{direction.name}" content="#{direction.name}" />
+							<c:selectOption name="#{direction}" content="#{direction}" />
 						</ui:repeat>
 					</c:selectOne>
 				</div>
@@ -97,7 +97,7 @@
 					<c:selectOne styleClass="required" name="prm_depth_pk">
 						<c:selectOption name="#{localizedStrings['is.illuminati.block.hephaestus']['select_depth_unit']}" content="" />
 						<ui:repeat value="#{wellLogImportBean.depthUnits}" var="depthUnit">
-							<c:selectOption name="#{depthUnit.name}" content="#{depthUnit.name}" />
+							<c:selectOption name="#{depthUnit}" content="#{depthUnit}" />
 						</ui:repeat>
 					</c:selectOne>
 				</div>
@@ -109,7 +109,7 @@
 					<c:selectOne styleClass="required" name="prm_temperature_pk">
 						<c:selectOption name="#{localizedStrings['is.illuminati.block.hephaestus']['select_temperature_unit']}" content="" />
 						<ui:repeat value="#{wellLogImportBean.temperatureUnits}" var="temperatureUnit">
-							<c:selectOption name="#{temperatureUnit.name}" content="#{temperatureUnit.name}" />
+							<c:selectOption name="#{temperatureUnit}" content="#{temperatureUnit}" />
 						</ui:repeat>
 					</c:selectOne>
 				</div>
@@ -121,7 +121,7 @@
 					<c:selectOne styleClass="required" name="prm_pressure_pk">
 						<c:selectOption name="#{localizedStrings['is.illuminati.block.hephaestus']['select_pressure_unit']}" content="" />
 						<ui:repeat value="#{wellLogImportBean.pressureUnits}" var="pressureUnit">
-							<c:selectOption name="#{pressureUnit.name}" content="#{pressureUnit.name}" />
+							<c:selectOption name="#{pressureUnit}" content="#{pressureUnit}" />
 						</ui:repeat>
 					</c:selectOne>
 				</div>
