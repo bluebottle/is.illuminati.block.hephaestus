@@ -1,12 +1,16 @@
 package is.illuminati.block.hephaestus.dao.impl;
 
+import is.illuminati.block.hephaestus.business.LoggingCondition;
+import is.illuminati.block.hephaestus.business.LoggingDirection;
 import is.illuminati.block.hephaestus.dao.HephaestusDao;
+import is.illuminati.block.hephaestus.data.DepthData;
 import is.illuminati.block.hephaestus.data.LogHeader;
 import is.illuminati.block.hephaestus.data.Pad;
 import is.illuminati.block.hephaestus.data.Project;
 import is.illuminati.block.hephaestus.data.Tool;
 import is.illuminati.block.hephaestus.data.Well;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.config.BeanDefinition;
@@ -184,5 +188,44 @@ public class HephaestusDaoImpl extends GenericDaoImpl implements HephaestusDao {
 	
 	public List<Tool> getTools() {
 		return getResultList("tool.findAll", Tool.class);
+	}
+	
+	public Tool getTool(Long toolID) {
+		return find(Tool.class, toolID);
+	}
+
+	@Transactional(readOnly = false)
+	public LogHeader storeLogHeader(Well well, LoggingCondition condition,
+			Tool tool, Date startDate, Date endDate, Double shift,
+			LoggingDirection logDirection, String engineers, String comment, String serviceCompany, User createdBy) {
+		LogHeader header = new LogHeader();
+		header.setComment(comment);
+		header.setCondition(condition);
+		header.setCreatedBy(createdBy);
+		header.setCreatedDate(IWTimestamp.getTimestampRightNow());
+		header.setEndDate(endDate);
+		header.setEngineers(engineers);
+		header.setLogDirection(logDirection);
+		header.setServiceCompnay(serviceCompany);
+		header.setShift(shift);
+		header.setStartDate(startDate);
+		header.setTool(tool);
+		header.setWell(well);
+
+		getEntityManager().persist(header);
+
+		return header;
+	}
+
+	@Transactional(readOnly = false)
+	public DepthData storeDepthDate(LogHeader header, Double depth, Double value) {
+		DepthData data = new DepthData();
+		data.setHeader(header);
+		data.setDepth(depth);
+		data.setValue(value);
+		
+		getEntityManager().persist(data);
+
+		return data;		
 	}
 }

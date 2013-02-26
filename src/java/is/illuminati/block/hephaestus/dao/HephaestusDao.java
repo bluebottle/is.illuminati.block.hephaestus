@@ -1,12 +1,16 @@
 package is.illuminati.block.hephaestus.dao;
 
 
+import is.illuminati.block.hephaestus.business.LoggingCondition;
+import is.illuminati.block.hephaestus.business.LoggingDirection;
+import is.illuminati.block.hephaestus.data.DepthData;
 import is.illuminati.block.hephaestus.data.LogHeader;
 import is.illuminati.block.hephaestus.data.Pad;
 import is.illuminati.block.hephaestus.data.Project;
 import is.illuminati.block.hephaestus.data.Tool;
 import is.illuminati.block.hephaestus.data.Well;
 
+import java.util.Date;
 import java.util.List;
 
 import com.idega.core.persistence.GenericDao;
@@ -54,4 +58,12 @@ public interface HephaestusDao extends GenericDao {
 	public List<LogHeader> getLogHeaders(Well well);
 	
 	public List<Tool> getTools();
+	
+	public Tool getTool(Long toolID);
+	
+	public LogHeader storeLogHeader(Well well, LoggingCondition condition,
+			Tool tool, Date startDate, Date endDate, Double shift,
+			LoggingDirection logDirection, String engineers, String comment, String serviceCompany, User createdBy);
+	
+	public DepthData storeDepthDate(LogHeader header, Double depth, Double value);
 }

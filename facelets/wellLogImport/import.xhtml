@@ -30,7 +30,7 @@
 					<label for="prm_condition_pk"><h:outputText value="#{localizedStrings['is.illuminati.block.hephaestus']['condition']}" /></label>
 					<c:selectOne styleClass="required" name="prm_condition_pk">
 						<c:selectOption name="#{localizedStrings['is.illuminati.block.hephaestus']['select_condition']}" content="" />
-						<ui:repeat value="#{wellLogImportBean.condition}" var="condition">
+						<ui:repeat value="#{wellLogImportBean.conditions}" var="condition">
 							<c:selectOption name="#{condition}" content="#{condition}" />
 						</ui:repeat>
 					</c:selectOne>
@@ -51,12 +51,12 @@
 
 			<div class="formItem required">
 				<label for="prm_start_date"><h:outputText value="#{localizedStrings['is.illuminati.block.hephaestus']['start_date']}" /></label>
-				<input class="datePicker required" name="prm_start_date" value="#{p:formatDate(wellLogImportBean.startDate, 'dd.MM.yyyy HH:mm')}" />
+				<c:datePicker inputName="prm_start_date" initialDate="#{wellLogImportBean.startDate}" showMonth="#{true}" showYear="#{true}" />
 			</div>
 
 			<div class="formItem required">
 				<label for="prm_end_date"><h:outputText value="#{localizedStrings['is.illuminati.block.hephaestus']['end_date']}" /></label>
-				<input class="datePicker required" name="prm_end_date" value="#{p:formatDate(wellLogImportBean.endDate, 'dd.MM.yyyy HH:mm')}" />
+				<c:datePicker inputName="prm_end_date" initialDate="#{wellLogImportBean.endDate}" showMonth="#{true}" showYear="#{true}" />
 			</div>
 
 			<div class="formItem required">

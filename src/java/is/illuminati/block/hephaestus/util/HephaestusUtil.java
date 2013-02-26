@@ -1,5 +1,9 @@
 package is.illuminati.block.hephaestus.util;
 
+import is.illuminati.block.hephaestus.data.LogHeader;
+import is.illuminati.block.hephaestus.data.Well;
+
+import java.io.File;
 import java.util.Date;
 import java.util.List;
 
@@ -24,14 +28,30 @@ public class HephaestusUtil {
 		}
 		return "";
 	}
-	
+
 	public static String escapeXML(String string) {
-		string = StringEscapeUtils.unescapeHtml(string.replaceAll("\\<[^>]*>", ""));
+		string = StringEscapeUtils.unescapeHtml(string.replaceAll("\\<[^>]*>",
+				""));
 		return string;
 	}
-	
+
 	public static boolean contains(List<?> objects, Object object) {
 		boolean contains = objects.contains(object);
 		return contains;
 	}
+
+	public static String getImageForWell(Well well, List<LogHeader> headers) {
+		try {
+			ProcessBuilder pb = new ProcessBuilder(
+					"/home/andri/goramyndir/goramyndir.sh", "-s "
+							+ well.getName());
+			pb.directory(new File("/home/ubuntu/images"));
+			Process p = pb.start();
+			int exit = p.exitValue();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return "";
 	}
+}
