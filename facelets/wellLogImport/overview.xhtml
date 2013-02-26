@@ -1,0 +1,56 @@
+<html
+		xmlns:ui="http://java.sun.com/jsf/facelets"
+		xmlns:h="http://java.sun.com/jsf/html"
+		xmlns:c="http://xmlns.idega.com/com.idega.core"
+		xmlns:a="http://xmlns.idega.com/is.idega.idegaweb.egov.application"
+		xmlns:f="http://java.sun.com/jsf/core"
+		xmlns:p="http://xmlns.idega.com/is.illuminati.block.hephaestus"
+>
+<ui:component>
+	<form class="adminForm" action="" method="post">
+		<input type="hidden" name="prm_action" value="2" />
+
+		<ui:fragment rendered="#{not empty wellLogImportSession.dataPoint}">		
+			<fieldset class="formSection">
+				<table class="adminTable" width="100%" cellspacing="0" cellpadding="0">
+					<thead>
+						<tr>
+							<th class="firstColumn"><h:outputText value="#{localizedStrings['is.illuminati.block.hephaestus']['selected']}" /></th>
+							<th class="lastColumn"><h:outputText value="#{localizedStrings['is.illuminati.block.hephaestus']['value']}" /></th>
+						</tr>
+					</thead>
+
+					<tbody>
+						<tr>
+							<td class="firstColumn"><h:outputText value="#{localizedStrings['is.illuminati.block.hephaestus']['well']}" /></td>
+							<td class="lastColumn"><h:outputText value="#{wellLogImportSession.well.name}" /></td>
+						</tr>
+					</tbody>
+				</table>
+
+				<table class="adminTable" width="100%" cellspacing="0" cellpadding="0">
+					<thead>
+						<tr>
+							<th class="firstColumn"><h:outputText value="#{localizedStrings['is.illuminati.block.hephaestus']['depth']}" /></th>
+							<th class="lastColumn"><h:outputText value="#{localizedStrings['is.illuminati.block.hephaestus']['value']}" /></th>
+						</tr>
+					</thead>
+
+					<tbody>
+						<ui:repeat value="#{wellLogImportSession.dataPoint}" var="data">
+							<tr>
+								<td class="firstColumn"><h:outputText value="#{data.x}" /></td>
+								<td class="lastColumn"><h:outputText value="#{data.y}" /></td>
+							</tr>
+						</ui:repeat>
+					</tbody>
+				</table>
+			</fieldset>
+		</ui:fragment>
+
+		<div class="submit">
+			<a href="#" class="next" rel="3"><span><h:outputText value="#{localizedStrings['is.illuminati.block.hephaestus']['next']}" /></span></a>
+		</div>
+	</form>
+</ui:component>
+</html>
