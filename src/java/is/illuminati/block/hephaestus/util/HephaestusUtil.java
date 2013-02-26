@@ -8,7 +8,7 @@ import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
 
-import src.java.com.idega.util.IWTimestamp;
+import com.idega.util.IWTimestamp;
 
 @Service("hephaestusUtil")
 @Scope(BeanDefinition.SCOPE_SINGLETON)
