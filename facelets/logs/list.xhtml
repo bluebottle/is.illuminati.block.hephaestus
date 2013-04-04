@@ -5,6 +5,15 @@
 >
 <ui:component>
 	<h1><h:outputText value="#{localizedStrings['is.illuminati.block.hephaestus']['log.log_headers']}" /></h1>
+
+	<h:outputLink value="/pages/welllogimport/" title="#{localizedStrings['is.illuminati.block.hephaestus']['import']}" styleClass="importItem">
+		<f:param name="prm_well_pk" value="#{param['prm_well_id']}" />
+		<h:outputText value="#{localizedStrings['is.illuminati.block.hephaestus']['import']}" />
+	</h:outputLink>
+	<h:outputLink value="#" title="#{localizedStrings['is.illuminati.block.hephaestus']['get_image']}" styleClass="imageItem">
+		<h:outputText value="#{localizedStrings['is.illuminati.block.hephaestus']['draw_image']}" />
+	</h:outputLink>
+
 	<table class="standard">
 		<thead>
 			<tr>

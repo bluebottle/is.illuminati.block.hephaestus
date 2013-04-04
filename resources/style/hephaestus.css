@@ -1,11 +1,11 @@
 .main h1 {
-  font-size: 1.25em;
-  margin-bottom: 1em;
+	font-size: 1.25em;
+	margin-bottom: 1em;
 }
 
 table.standard {
 	text-align: left;
-  width: 100%;
+	width: 100%;
 }
 
 table.standard thead tr th {
@@ -31,4 +31,93 @@ table.standard tr *:last-child {
 #map_canvas {
 	height: 500px;
 	margin-bottom: 24px;
+}
+
+/* Admin form */
+form.adminForm {
+	position: relative;
+	margin-bottom: 20px;
+}
+
+form.adminForm div.formItem {
+	width: auto;
+	overflow: hidden;
+	margin-bottom: 8px;
+	clear: both;
+}
+
+form.adminForm div.formItem label {
+	float: left;
+	line-height: 20px;
+	font-weight: bold;
+	width: 150px;
+}
+
+form.adminForm div.formItem span {
+	line-height: 20px;
+}
+
+form.adminForm div.required label:after {
+	content: '*';
+	color: #a00;
+	padding-left: 2px;
+}
+
+form.adminForm div.required label.error {
+	width: auto;
+	float: none;
+	font-weight: normal;
+	color: #a00;
+	font-style: italic;
+	padding-left: 1em;
+}
+
+form.adminForm div.required label.error:after {
+	display: none;
+}
+
+form.adminForm div.formItem input,form.adminForm div.formItem select {
+	border: 1px #ccc solid;
+	float: left;
+}
+
+form.adminForm div.submit {
+	clear: both;
+	width: 100%;
+	overflow: hidden;
+	margin-top: 2em;
+}
+
+form.adminForm div.submit a {
+	display: block;
+	float: left;
+	border: 1px #666 solid;
+	background-color: #efefef;
+	padding: 6px 12px;
+	text-decoration: none;
+	color: #666;
+	border-radius: 8px;
+	-moz-border-radius: 8px;
+	-webkit-border-radius: 8px;
+	text-transform: uppercase;
+}
+
+.main article {
+	position: relative;
+}
+
+a.importItem,a.imageItem {
+	float: right;
+	line-height: 40px;
+	border: 1px #9c9 solid;
+	padding: 0 20px;
+	margin-bottom: 12px;
+	font-size: 1.75em;
+	text-decoration: none;
+	color: #030;
+	background: #cfc;
+	border-radius: 8px;
+	-moz-border-radius: 8px;
+	-webkit-border-radius: 8px;
+	margin-left: .5em
 }

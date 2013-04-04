@@ -13,7 +13,7 @@
 		<h1><h:outputText value="#{localizedStrings['is.illuminati.block.hephaestus']['welllog_import']}" /></h1>
 				
 		<fieldset>
-			<ui:fragment rendered="#{not empty wellLogImportBean.wells}">
+			<ui:fragment rendered="#{not empty wellLogImportBean.wells and empty param['prm_well_pk']}">
 				<div class="formItem required">
 					<label for="prm_well_pk"><h:outputText value="#{localizedStrings['is.illuminati.block.hephaestus']['well']}" /></label>
 					<c:selectOne styleClass="required" name="prm_well_pk">
@@ -22,6 +22,13 @@
 							<c:selectOption name="#{well.name}" content="#{well.id}" />
 						</ui:repeat>
 					</c:selectOne>
+				</div>
+			</ui:fragment>
+			
+			<ui:fragment rendered="#{not empty param['prm_well_pk']}">
+				<div class="formItem">
+					<label><h:outputText value="#{localizedStrings['is.illuminati.block.hephaestus']['well']}" /></label>
+					<span><h:outputText value="#{param['prm_well_pk']}" /></span>
 				</div>
 			</ui:fragment>
 
@@ -76,19 +83,19 @@
 				</div>
 			</ui:fragment>
 
-			<div class="formItem required">
+			<div class="formItem">
 					<label for="prm_engineers"><h:outputText value="#{localizedStrings['is.illuminati.block.hephaestus']['engineers']}" /></label>
-					<input type="text" class="required" name="prm_engineers" />
+					<input type="text" name="prm_engineers" />
 			</div>
 
-			<div class="formItem required">
+			<div class="formItem">
 					<label for="prm_comment"><h:outputText value="#{localizedStrings['is.illuminati.block.hephaestus']['comment']}" /></label>
-					<input type="text" class="required" name="prm_comment" />
+					<input type="text" name="prm_comment" />
 			</div>
 
-			<div class="formItem required">
+			<div class="formItem">
 					<label for="prm_service_company"><h:outputText value="#{localizedStrings['is.illuminati.block.hephaestus']['service_company']}" /></label>
-					<input type="text" class="required" name="prm_service_company" />
+					<input type="text" name="prm_service_company" />
 			</div>
 
 			<ui:fragment rendered="#{not empty wellLogImportBean.depthUnits}">
@@ -128,9 +135,9 @@
 			</ui:fragment>
 
 				
-			<div class="formItem">
+			<div class="formItem required">
 				<label for="fileupload"><h:outputText value="#{localizedStrings['is.illuminati.block.hephaestus']['excel']}" /></label>
-				<input type="file" name="fileupload" />
+				<input type="file" class="required" name="fileupload" />
 			</div>
 					
 			<div class="submit">

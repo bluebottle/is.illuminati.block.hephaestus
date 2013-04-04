@@ -200,12 +200,15 @@ public class CoordinateConversion {
 		double polarRadius = 6356752.314;
 
 		// flattening
+		@SuppressWarnings("unused")
 		double flattening = 0.00335281066474748;// (equatorialRadius-polarRadius)/equatorialRadius;
 
 		// inverse flattening 1/flattening
+		@SuppressWarnings("unused")
 		double inverseFlattening = 298.257223563;// 1/flattening;
 
 		// Mean radius
+		@SuppressWarnings("unused")
 		double rm = POW(equatorialRadius * polarRadius, 1 / 2.0);
 
 		// scale factor
@@ -216,10 +219,12 @@ public class CoordinateConversion {
 
 		double e1sq = e * e / (1 - e * e);
 
+		@SuppressWarnings("unused")
 		double n = (equatorialRadius - polarRadius)
 				/ (equatorialRadius + polarRadius);
 
 		// r curv 1
+		@SuppressWarnings("unused")
 		double rho = 6368573.744;
 
 		// r curv 2
@@ -256,6 +261,7 @@ public class CoordinateConversion {
 
 		double K5 = -2.995382942;
 
+		@SuppressWarnings("unused")
 		double A6 = -1.00541E-07;
 
 	}
@@ -506,6 +512,7 @@ public class CoordinateConversion {
 
 		double _a3;
 
+		@SuppressWarnings("unused")
 		double b = 6356752.314;
 
 		double a = 6378137;
@@ -519,9 +526,9 @@ public class CoordinateConversion {
 	}
 
 	private class Digraphs {
-		private Map digraph1 = new Hashtable();
+		private Map<Integer, String> digraph1 = new Hashtable<Integer, String>();
 
-		private Map digraph2 = new Hashtable();
+		private Map<Integer, String> digraph2 = new Hashtable<Integer, String>();
 
 		private String[] digraph1Array = { "A", "B", "C", "D", "E", "F", "G",
 				"H", "J", "K", "L", "M", "N", "P", "Q", "R", "S", "T", "U",

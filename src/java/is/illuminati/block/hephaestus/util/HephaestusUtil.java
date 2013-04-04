@@ -40,6 +40,7 @@ public class HephaestusUtil {
 		return contains;
 	}
 
+	@SuppressWarnings("unused")
 	public static String getImageForWell(Well well, List<LogHeader> headers) {
 		try {
 			ProcessBuilder pb = new ProcessBuilder(
