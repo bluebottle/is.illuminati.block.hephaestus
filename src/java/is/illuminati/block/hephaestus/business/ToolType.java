@@ -12,4 +12,7 @@ public enum ToolType {
 	Y_caliper,
 	casing_inspection, 
 	multifinger_caliper,
+	elevation,
+	enthalpy,
+	flow_rate
 }
