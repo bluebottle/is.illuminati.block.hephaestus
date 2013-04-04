@@ -48,6 +48,8 @@ public class HephaestusUtil {
 			pb.directory(new File("/home/ubuntu/images"));
 			Process p = pb.start();
 			int exit = p.exitValue();
+			
+			///usr/lib/gmt/bin/ps2raster
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
