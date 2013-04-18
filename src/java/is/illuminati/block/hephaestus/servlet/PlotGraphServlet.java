@@ -35,9 +35,6 @@ public class PlotGraphServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		IWContext iwc = new IWContext(req, resp, req.getSession().getServletContext());
 		if (iwc.isParameterSet(PARAMETER_WELL_PK)) {
-			resp.setStatus(200);
-			resp.setContentType("image/png");
-			
 			WebApplicationContext springContext = WebApplicationContextUtils.getWebApplicationContext(iwc.getServletContext());
 			HephaestusService service = (HephaestusService) springContext.getBean("hephaestusService");
 
@@ -53,7 +50,14 @@ public class PlotGraphServlet extends HttpServlet {
 			String measurementType = iwc.getParameter(PARAMETER_MEASUREMENT_TYPE);
 			
 			String imageURL = HephaestusUtil.getImageForWell(well, headers, measurementType);
+			if (imageURL == null ||  imageURL.isEmpty()) {
+				resp.setStatus(404);
+				return;
+			}
 
+			resp.setStatus(200);
+			resp.setContentType("image/png");
+			
 			File f = new File(imageURL);
 			BufferedImage bi = ImageIO.read(f);
 			OutputStream out = resp.getOutputStream();

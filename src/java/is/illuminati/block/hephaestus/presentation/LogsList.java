@@ -13,6 +13,7 @@ import javax.faces.context.FacesContext;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.idega.block.web2.business.JQuery;
 import com.idega.builder.business.BuilderLogicWrapper;
 import com.idega.business.IBORuntimeException;
 import com.idega.core.builder.data.ICPage;
@@ -33,6 +34,9 @@ public class LogsList extends IWBaseComponent {
 	@Autowired
 	private BuilderLogicWrapper builderLogicWrapper;
 
+	@Autowired
+	private JQuery jQuery;
+
 	private IWBundle iwb;
 	
 	private ICPage responsePage;
@@ -42,6 +46,8 @@ public class LogsList extends IWBaseComponent {
 		iwb = getBundle(context, getBundleIdentifier());
 		
 		if (iwc.isLoggedOn() && iwc.isParameterSet(PARAMETER_WELL_ID)) {
+			PresentationUtil.addJavaScriptSourceLineToHeader(iwc, getJQuery().getBundleURIToJQueryLib());
+			PresentationUtil.addJavaScriptSourceLineToHeader(iwc,iwb.getVirtualPathWithFileNameString("javascript/wellLogs.js"));
 			PresentationUtil.addStyleSheetToHeader(iwc, iwb.getVirtualPathWithFileNameString("style/hephaestus.css"));
 
 			Long wellId = Long.parseLong(iwc.getParameter(PARAMETER_WELL_ID));
@@ -51,6 +57,7 @@ public class LogsList extends IWBaseComponent {
 			
 			HephaestusBean bean = getBeanInstance("hephaestusBean");
 			bean.setLogs(logHeaders);
+			bean.setWell(well);
 			
 			if (responsePage != null) {
 				try {
@@ -87,6 +94,14 @@ public class LogsList extends IWBaseComponent {
 		return builderLogicWrapper;
 	}
 	
+	private JQuery getJQuery() {
+		if (jQuery == null) {
+			ELUtil.getInstance().autowire(this);
+		}
+
+		return jQuery;
+	}
+
 	public void setResponsePage(ICPage page) {
 		this.responsePage = page;
 	}

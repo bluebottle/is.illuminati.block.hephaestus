@@ -19,6 +19,8 @@ public class HephaestusBean {
 	private Long projectId;
 	private Long padId;
 	
+	private Well well;
+	
 	private List<Project> projects;
 	private List<Pad> pads;
 	private List<Well> wells;
@@ -46,6 +48,14 @@ public class HephaestusBean {
 
 	public void setPadId(Long padId) {
 		this.padId = padId;
+	}
+
+	public Well getWell() {
+		return well;
+	}
+
+	public void setWell(Well well) {
+		this.well = well;
 	}
 
 	public List<Project> getProjects() {

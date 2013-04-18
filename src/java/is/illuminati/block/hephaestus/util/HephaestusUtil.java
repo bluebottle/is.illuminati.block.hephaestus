@@ -71,7 +71,7 @@ public class HephaestusUtil {
 			int exitValue = executor.execute(cmdLine);
 			System.out.println("exitValue = " + exitValue);
 			
-			return "home/ubuntu/images/" + filename;
+			return "/home/ubuntu/images/" + filename;
 		} catch (ExecuteException e) {
 			e.printStackTrace();
 		} catch (IOException e) {

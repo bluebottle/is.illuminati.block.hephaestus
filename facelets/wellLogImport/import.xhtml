@@ -12,13 +12,10 @@
 
 		<h1>
 			<h:outputText value="#{localizedStrings['is.illuminati.block.hephaestus']['welllog_import']}" />
-			<ui:fragment rendered="#{not empty wellLogImportBean.well}">
-				<h:outputText value=" - #{well.name} (#{well.id})" />
-			</ui:fragment>
 		</h1>
 				
 		<fieldset>
-			<ui:fragment rendered="#{not empty wellLogImportBean.wells and empty param['prm_well_pk']}">
+			<ui:fragment rendered="#{not empty wellLogImportBean.wells and empty wellLogImportBean.well}">
 				<div class="formItem required">
 					<label for="prm_well_pk"><h:outputText value="#{localizedStrings['is.illuminati.block.hephaestus']['well']}" /></label>
 					<c:selectOne styleClass="required" name="prm_well_pk">
@@ -30,10 +27,11 @@
 				</div>
 			</ui:fragment>
 			
-			<ui:fragment rendered="#{not empty param['prm_well_pk']}">
+			<ui:fragment rendered="#{not empty wellLogImportBean.well}">
 				<div class="formItem">
 					<label><h:outputText value="#{localizedStrings['is.illuminati.block.hephaestus']['well']}" /></label>
-					<span><h:outputText value="#{param['prm_well_pk']}" /></span>
+					<input type="hidden" name="prm_well_pk" value="#{wellLogImportBean.well.id}" />
+					<span><h:outputText value="#{wellLogImportBean.well.name} (#{wellLogImportBean.well.id})" /></span>
 				</div>
 			</ui:fragment>
 
