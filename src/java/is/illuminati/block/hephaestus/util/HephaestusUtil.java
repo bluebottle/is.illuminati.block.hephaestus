@@ -16,6 +16,7 @@ import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
 
+import com.idega.core.idgenerator.business.UUIDGenerator;
 import com.idega.util.IWTimestamp;
 
 @Service("hephaestusUtil")
@@ -45,28 +46,40 @@ public class HephaestusUtil {
 	}
 
 	@SuppressWarnings("unused")
-	public static String getImageForWell(Well well, List<LogHeader> headers) {
+	public static String getImageForWell(Well well, List<LogHeader> headers, String type) {
+		String line = "/home/andri/goramyndir/goramyndir.sh -s " + well.getName();
+		CommandLine cmdLine = CommandLine.parse(line);
+		DefaultExecutor executor = new DefaultExecutor();
+		executor.setWorkingDirectory(new File("/home/ubuntu/images"));
 		try {
-			ProcessBuilder pb = new ProcessBuilder("/bin/ksh", 
-					"/home/andri/goramyndir/goramyndir.sh", "-s "
-							+ well.getName());
-			pb.directory(new File("/home/ubuntu/images"));
-			Process p = pb.start();
-			try {  
-	            int shellExitStatus = p.waitFor();  
-	            if (shellExitStatus != 0) {  
-	            	System.out.println("Successfully executed the shell script");  
-	            }  
-	        } catch (InterruptedException ex) {  
-	        	System.out.println("Shell Script preocess is interrupted");  
-	        }  
-			System.out.println("Process done");
-			///usr/lib/gmt/bin/ps2raster
-		} catch (Exception e) {
+			int exitValue = executor.execute(cmdLine);
+			System.out.println("exitValue = " + exitValue);
+		} catch (ExecuteException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
 			e.printStackTrace();
 		}
-
-		return "";
+		
+		String uuid = UUIDGenerator.getInstance().generateUUID();
+		File folder = new File("/home/ubuntu/images/" + uuid);
+		if (!folder.exists()) {
+			folder.mkdir();
+		}
+		String filename = uuid + "/" + well.getName() + ".png";
+		line = "/usr/lib/gmt/bin/ps2raster plot_gmt.ps -Tg -F" + filename;
+		cmdLine = CommandLine.parse(line);
+		try {
+			int exitValue = executor.execute(cmdLine);
+			System.out.println("exitValue = " + exitValue);
+			
+			return "home/ubuntu/images/" + filename;
+		} catch (ExecuteException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		return "";		
 	}
 	
 /*	public static String getImageForWell(String wellname, List<Long> headerID) {
@@ -97,6 +110,7 @@ public class HephaestusUtil {
 		String line = "/home/andri/goramyndir/goramyndir.sh -s " + wellname;
 		CommandLine cmdLine = CommandLine.parse(line);
 		DefaultExecutor executor = new DefaultExecutor();
+		executor.setWorkingDirectory(new File("/home/ubuntu/images"));
 		try {
 			int exitValue = executor.execute(cmdLine);
 			System.out.println("exitValue = " + exitValue);
@@ -106,7 +120,13 @@ public class HephaestusUtil {
 			e.printStackTrace();
 		}
 		
-		line = "/usr/lib/gmt/bin/ps2raster plot_gmt.ps -Tg -Fpalli.png";
+		String uuid = UUIDGenerator.getInstance().generateUUID();
+		File folder = new File("/home/ubuntu/images/" + uuid);
+		if (!folder.exists()) {
+			folder.mkdir();
+		}
+		String filename = uuid + "/" + wellname + ".png";
+		line = "/usr/lib/gmt/bin/ps2raster plot_gmt.ps -Tg -F" + filename;
 		cmdLine = CommandLine.parse(line);
 		try {
 			int exitValue = executor.execute(cmdLine);
