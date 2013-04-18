@@ -7,10 +7,10 @@
 	<form id="wellLogHeaders" action="/plotGraph/" method="post" target="_blank">
 		<input type="hidden" name="prm_well_pk" value="#{param['prm_well_id']}" />
 		
-		<h1><h:outputText value="#{localizedStrings['is.illuminati.block.hephaestus']['log.log_headers']} - #{wellLogImportBean.well.name} (#{wellLogImportBean.well.id})" /></h1>
+		<h1><h:outputText value="#{localizedStrings['is.illuminati.block.hephaestus']['log.log_headers']} - #{hephaestusBean.well.name} (#{hephaestusBean.well.id})" /></h1>
 	
 		<h:outputLink value="/pages/welllogimport/" title="#{localizedStrings['is.illuminati.block.hephaestus']['import']}" styleClass="importItem">
-			<f:param name="prm_well_pk" value="#{param['prm_well_id']}" />
+			<f:param name="prm_well_pk" value="#{hephaestusBean.well.id}" />
 			<h:outputText value="#{localizedStrings['is.illuminati.block.hephaestus']['import']}" />
 		</h:outputLink>
 		<h:outputLink value="#" title="#{localizedStrings['is.illuminati.block.hephaestus']['get_image']}" styleClass="imageItem">
