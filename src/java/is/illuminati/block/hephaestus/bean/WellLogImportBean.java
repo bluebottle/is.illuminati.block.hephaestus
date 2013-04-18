@@ -17,6 +17,8 @@ import org.springframework.stereotype.Service;
 @Service("wellLogImportBean")
 @Scope("request")
 public class WellLogImportBean {
+	
+	private Well well;
 	private List<Well> wells;
 	private List<Tool> tools;
 	private List<LoggingCondition> conditions;
@@ -35,6 +37,14 @@ public class WellLogImportBean {
 	private DepthUnit defaultDepthUnit;
 	private TemperatureUnit defaultTemperatureUnit;
 	private PressureUnit defaultPressureUnit;
+	
+	public Well getWell() {
+		return well;
+	}
+	
+	public void setWell(Well well) {
+		this.well = well;
+	}
 	
 	public List<Well> getWells() {
 		return wells;

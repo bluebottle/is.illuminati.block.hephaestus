@@ -1,5 +1,9 @@
 package is.illuminati.block.hephaestus.business;
 
+import is.illuminati.block.hephaestus.dao.HephaestusDao;
+import is.illuminati.block.hephaestus.data.LogHeader;
+import is.illuminati.block.hephaestus.data.Well;
+
 import java.io.FileInputStream;
 import java.util.ArrayList;
 import java.util.List;
@@ -8,12 +12,19 @@ import org.apache.poi.hssf.usermodel.HSSFCell;
 import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
+
+import com.idega.util.expression.ELUtil;
 
 @Scope("singleton")
 @Service("hephaestusService")
 public class HephaestusService {
+	
+	@Autowired
+	private HephaestusDao dao;
+	
 	public List<DataPoint> importExcelFile(FileInputStream input) {
 		List<DataPoint> ret = new ArrayList<DataPoint>();
 
@@ -53,5 +64,21 @@ public class HephaestusService {
 		}
 
 		return value;
+	}
+	
+	public Well getWell(Long wellID) {
+		return getDao().getWell(wellID);
+	}
+	
+	public LogHeader getLogHeader(Long logHeaderID) {
+		return getDao().getLogHeader(logHeaderID);
+	}
+	
+	private HephaestusDao getDao() {
+		if (dao == null) {
+			ELUtil.getInstance().autowire(this);
+		}
+		
+		return dao;
 	}
 }

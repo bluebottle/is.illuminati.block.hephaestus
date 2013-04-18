@@ -90,6 +90,9 @@ public class WellLogImport extends IWBaseComponent {
 
 		WellLogImportBean bean = getBeanInstance("wellLogImportBean");
 		Project project = null;
+		if (iwc.isParameterSet("prm_well_pk")) {
+			bean.setWell(getDao().getWell(Long.parseLong(iwc.getParameter("prm_well_pk"))));
+		}
 		bean.setWells(getDao().getWells(project));
 		bean.setTools(getDao().getTools());
 		bean.setDepthUnits(Arrays.asList(DepthUnit.values()));

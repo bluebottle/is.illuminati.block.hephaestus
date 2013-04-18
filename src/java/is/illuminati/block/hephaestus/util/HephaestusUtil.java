@@ -45,7 +45,6 @@ public class HephaestusUtil {
 		return contains;
 	}
 
-	@SuppressWarnings("unused")
 	public static String getImageForWell(Well well, List<LogHeader> headers, String type) {
 		String line = "/home/andri/goramyndir/goramyndir.sh -s " + well.getName();
 		CommandLine cmdLine = CommandLine.parse(line);

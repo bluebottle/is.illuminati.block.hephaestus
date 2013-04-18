@@ -10,7 +10,12 @@
 	<form class="adminForm" action="" method="post" enctype="multipart/form-data">
 		<input type="hidden" name="prm_action" value="1" />
 
-		<h1><h:outputText value="#{localizedStrings['is.illuminati.block.hephaestus']['welllog_import']}" /></h1>
+		<h1>
+			<h:outputText value="#{localizedStrings['is.illuminati.block.hephaestus']['welllog_import']}" />
+			<ui:fragment rendered="#{not empty wellLogImportBean.well}">
+				<h:outputText value=" - #{well.name} (#{well.id})" />
+			</ui:fragment>
+		</h1>
 				
 		<fieldset>
 			<ui:fragment rendered="#{not empty wellLogImportBean.wells and empty param['prm_well_pk']}">
@@ -58,10 +63,10 @@
 
 			<div class="formItem required">
 				<label for="prm_start_date"><h:outputText value="#{localizedStrings['is.illuminati.block.hephaestus']['start_date']}" /></label>
-				<c:datePicker inputName="prm_start_date" initialDate="#{wellLogImportBean.startDate}" showMonth="#{true}" showYear="#{true}" />
+				<c:datePicker styleClass="required" inputName="prm_start_date" initialDate="#{wellLogImportBean.startDate}" showMonth="#{true}" showYear="#{true}" />
 			</div>
 
-			<div class="formItem required">
+			<div class="formItem">
 				<label for="prm_end_date"><h:outputText value="#{localizedStrings['is.illuminati.block.hephaestus']['end_date']}" /></label>
 				<c:datePicker inputName="prm_end_date" initialDate="#{wellLogImportBean.endDate}" showMonth="#{true}" showYear="#{true}" />
 			</div>

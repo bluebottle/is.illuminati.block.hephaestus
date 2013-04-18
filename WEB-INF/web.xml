@@ -19,9 +19,20 @@
   		<load-on-startup>1</load-on-startup>
 	</servlet>
 	
+	<servlet>
+		<display-name>Plot Graph</display-name>
+		<servlet-name>PlotGraphServlet</servlet-name>
+		<servlet-class>is.illuminati.block.hephaestus.servlet.PlotGraphServlet</servlet-class>
+	</servlet>
+	
 	<servlet-mapping>
 		<servlet-name>Jersey REST Service</servlet-name>
 		<url-pattern>/rest/*</url-pattern>
+	</servlet-mapping>
+	
+	<servlet-mapping>
+		<servlet-name>PlotGraphServlet</servlet-name>
+		<url-pattern>/plotGraph/*</url-pattern>
 	</servlet-mapping>
 	
 	<filter>

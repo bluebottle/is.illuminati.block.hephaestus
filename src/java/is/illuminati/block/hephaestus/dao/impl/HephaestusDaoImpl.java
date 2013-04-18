@@ -182,6 +182,10 @@ public class HephaestusDaoImpl extends GenericDaoImpl implements HephaestusDao {
 		return false;
 	}
 
+	public LogHeader getLogHeader(Long logHeaderID) {
+		return find(LogHeader.class, logHeaderID);
+	}
+
 	public List<LogHeader> getLogHeaders(Well well) {
 		return getResultList("logHeader.findAllByWell", LogHeader.class, new Param("well", well));
 	}

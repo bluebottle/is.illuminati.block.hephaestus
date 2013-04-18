@@ -55,6 +55,7 @@ public interface HephaestusDao extends GenericDao {
 	
 	public boolean removeWell(Long wellID);
 	
+	public LogHeader getLogHeader(Long logHeaderID);
 	public List<LogHeader> getLogHeaders(Well well);
 	
 	public List<Tool> getTools();
