@@ -1,13 +1,22 @@
 package is.illuminati.block.hephaestus.data;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.Table;
 
+@Entity
+@Table(name = ModelLayer.ENTITY_NAME)
+@NamedQueries({
+        @NamedQuery(name = "modelLayer.findAll", query = "select m from ModelLayer m")
+})
 public class ModelLayer {
 
 	public static final String ENTITY_NAME = "num_model_layer";
