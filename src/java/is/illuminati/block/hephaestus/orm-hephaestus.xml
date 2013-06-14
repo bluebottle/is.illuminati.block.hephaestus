@@ -7,6 +7,8 @@
     <entity class="is.illuminati.block.hephaestus.data.Cellar" />
     <entity class="is.illuminati.block.hephaestus.data.DepthData" />
     <entity class="is.illuminati.block.hephaestus.data.LogHeader" />
+    <entity class="is.illuminati.block.hephaestus.data.Model" />
+    <entity class="is.illuminati.block.hephaestus.data.ModelLayer" />
     <entity class="is.illuminati.block.hephaestus.data.Pad" />
     <entity class="is.illuminati.block.hephaestus.data.Project" />
     <entity class="is.illuminati.block.hephaestus.data.TimeData" />
