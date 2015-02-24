@@ -46,7 +46,7 @@ public class HephaestusUtil {
 	}
 
 	public static String getImageForWell(Well well, List<LogHeader> headers, String type) {
-		String line = "/home/andri/goramyndir/goramyndir.sh -s " + well.getName();
+		String line = "/home/andri/goramyndir/goramyndir.sh -id " + well.getId();
 		CommandLine cmdLine = CommandLine.parse(line);
 		DefaultExecutor executor = new DefaultExecutor();
 		executor.setWorkingDirectory(new File("/home/ubuntu/images"));
